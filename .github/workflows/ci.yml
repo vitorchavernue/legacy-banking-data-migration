@@ -1,0 +1,84 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Fast feedback: code style and the business rules (no database needed)
+  lint-and-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Unit tests (cleaning rules and mapping)
+        run: pytest -q tests/unit
+
+  # The real thing: SQL Server -> PostgreSQL + MongoDB, in throwaway containers
+  integration:
+    needs: lint-and-unit
+    runs-on: ubuntu-latest
+    services:
+      sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        env:
+          ACCEPT_EULA: "Y"
+          MSSQL_SA_PASSWORD: CiOnlyPassw0rd2026  # throwaway container used only by this job
+        ports: ["1433:1433"]
+        options: >-
+          --health-cmd "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P CiOnlyPassw0rd2026 -Q 'SELECT 1' -b -o /dev/null"
+          --health-interval 10s --health-timeout 5s --health-retries 20 --health-start-period 20s
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: core
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 20
+      mongo:
+        image: mongo:7
+        ports: ["27017:27017"]
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'db.runCommand({ping: 1})'"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      PYTHONPATH: src
+      LEGACY_DB_URL: mssql+pymssql://sa:CiOnlyPassw0rd2026@localhost:1433/legacy
+      TARGET_DB_URL: postgresql+psycopg://postgres:postgres@localhost:5432/core
+      MONGO_URI: mongodb://localhost:27017
+      API_KEY: test-key
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Integration tests (full load, incremental, reconciliation gate, API)
+        run: pytest -q tests/integration
+
+      - name: End-to-end run at full scale (5,000 customers, ~46,000 transactions)
+        run: |
+          python -m migration reset-target
+          python -m migration seed --scale 1
+          python -m migration run --mode full
+          python -m migration changes
+          python -m migration run --mode incremental
+          cat reports/latest.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload run reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-reports
+          path: reports/
