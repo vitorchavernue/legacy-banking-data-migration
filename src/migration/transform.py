@@ -49,7 +49,7 @@ class Result:
 
 def to_json(row: dict) -> dict[str, Any]:
     """Legacy row as JSON (kept with the rejected record for analysis)."""
-    return {k: (str(v) if isinstance(v, (datetime, Decimal)) else v) for k, v in row.items()}
+    return {k: (str(v) if isinstance(v, datetime | Decimal) else v) for k, v in row.items()}
 
 
 def localize(value: datetime | None, tz: str) -> datetime | None:
