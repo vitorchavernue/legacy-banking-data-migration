@@ -1,0 +1,20 @@
+# Local environment: the legacy SQL Server, the new PostgreSQL and MongoDB.
+# docker compose up -d && make demo
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-LocalOnlyPassw0rd2026}
+    ports: ["1433:1433"]
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: core
+    ports: ["5432:5432"]
+
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]

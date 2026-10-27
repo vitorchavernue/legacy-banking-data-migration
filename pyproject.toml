@@ -1,0 +1,19 @@
+[project]
+name = "legacy-banking-data-migration"
+version = "1.0.0"
+description = "Legacy core banking migration: SQL Server -> PostgreSQL + MongoDB, with reconciliation gate and API"
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
