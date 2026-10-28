@@ -13,7 +13,7 @@ out, and the next day a full run repairs it. The run history feeds the monitorin
 from __future__ import annotations
 
 import random
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from decimal import Decimal
 
 from sqlalchemy import func, select, text
@@ -38,7 +38,7 @@ def business_days(start: date, count: int) -> list[date]:
 def add_new_defects(engine, count: int, seed_: int) -> int:
     """New problems keep arriving while the old ones are fixed (zero amounts, typing errors)."""
     rng = random.Random(seed_)
-    now = datetime.now().replace(microsecond=0)
+    now = seed.legacy_now()
     with engine.begin() as conn:
         account_ids = [r[0] for r in conn.execute(select(accounts.c.CD_CONTA))]
         next_id = conn.execute(select(func.max(transactions.c.CD_LANCAMENTO))).scalar_one()

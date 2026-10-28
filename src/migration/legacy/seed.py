@@ -16,9 +16,11 @@ from __future__ import annotations
 import random
 from datetime import datetime, timedelta
 from decimal import Decimal
+from zoneinfo import ZoneInfo
 
 from sqlalchemy import Engine, func, select, text, update
 
+from migration.config import get_settings
 from migration.legacy.schema import accounts, customers, metadata, transactions
 from migration.rules import cpf_is_valid
 
@@ -30,6 +32,14 @@ LAST = (
     "Silva Santos Oliveira Souza Lima Pereira Costa Rodrigues Almeida Nascimento Araújo Ferreira Carvalho Gomes Ribeiro Martins"
 ).split()
 HISTORY = ["PIX RECEBIDO", "PIX ENVIADO", "TRANSFERÊNCIA", "PAGAMENTO BOLETO", "SAQUE", "DEPÓSITO", "TARIFA", "COMPRA DÉBITO"]
+
+
+def legacy_now() -> datetime:
+    """Current time as the legacy system records it: local time of the bank, without offset.
+
+    Using the server clock instead would put rows hours in the future on machines running in UTC.
+    """
+    return datetime.now(ZoneInfo(get_settings().legacy_timezone)).replace(tzinfo=None, microsecond=0)
 
 
 def make_cpf(rng: random.Random) -> str:
@@ -48,7 +58,7 @@ def mojibake(text_: str) -> str:
 
 def generate(scale: float = 1.0, seed: int = 42, now: datetime | None = None) -> dict[str, list[dict]]:
     rng = random.Random(seed)
-    now = (now or datetime.now()).replace(microsecond=0)
+    now = (now or legacy_now()).replace(microsecond=0)
     n_customers = max(50, int(5_000 * scale))
 
     def changed_at() -> datetime:
@@ -179,7 +189,7 @@ def apply_changes(engine: Engine, now: datetime | None = None, seed: int = 7, fi
     * a transaction amount is corrected and an account is closed
     """
     rng = random.Random(seed)
-    now = (now or datetime.now()).replace(microsecond=0)
+    now = (now or legacy_now()).replace(microsecond=0)
     changes = {"emails_updated": 0, "cpfs_fixed": 0, "new_customers": 0, "new_transactions": 0}
     with engine.begin() as conn:
         ids = [r[0] for r in conn.execute(select(customers.c.CD_CLIENTE).order_by(customers.c.CD_CLIENTE))]
@@ -270,7 +280,7 @@ def fix_some_defects(engine: Engine, share: float, now: datetime | None = None, 
     * accounts and transactions pointing to records that do not exist re-linked by the back office
     """
     rng = random.Random(seed)
-    now = (now or datetime.now()).replace(microsecond=0)
+    now = (now or legacy_now()).replace(microsecond=0)
     fixed = {"cpf": 0, "amount": 0, "future_date": 0, "orphan_account": 0, "orphan_transaction": 0}
 
     def pick(items: list) -> list:
