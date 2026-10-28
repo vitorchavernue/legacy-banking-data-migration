@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "MigrationControl"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "62fd62bd-73ea-43e4-bc22-74f973841a68"
+  }
+}

@@ -1,0 +1,32 @@
+relationship coverage_run
+	fromColumn: Coverage.'Run ID'
+	toColumn: Runs.'Run ID'
+
+relationship backlog_run
+	fromColumn: Backlog.'Run ID'
+	toColumn: Runs.'Run ID'
+
+relationship checks_run
+	fromColumn: Checks.'Run ID'
+	toColumn: Runs.'Run ID'
+
+relationship volumes_run
+	fromColumn: 'Run Volumes'.'Run ID'
+	toColumn: Runs.'Run ID'
+
+relationship coverage_table
+	fromColumn: Coverage.'Source Table'
+	toColumn: 'Source Tables'.'Source Table'
+
+relationship backlog_table
+	fromColumn: Backlog.'Source Table'
+	toColumn: 'Source Tables'.'Source Table'
+
+relationship volumes_table
+	fromColumn: 'Run Volumes'.'Source Table'
+	toColumn: 'Source Tables'.'Source Table'
+
+relationship rejected_table
+	fromColumn: 'Rejected Records'.'Source Table'
+	toColumn: 'Source Tables'.'Source Table'
+

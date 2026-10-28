@@ -1,0 +1,32 @@
+/// Legacy tables being migrated: customers, accounts and transactions.
+table 'Source Tables'
+
+	column 'Source Table'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Source Table
+
+	column Entity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Entity
+		sortByColumn: 'Entity Order'
+
+	column 'Entity Order'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Entity Order
+
+	partition 'Source Tables' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "source_tables.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Source Table", type text }, { "Entity", type text }, { "Entity Order", Int64.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

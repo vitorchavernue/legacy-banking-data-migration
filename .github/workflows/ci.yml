@@ -67,18 +67,38 @@ jobs:
       - name: Integration tests (full load, incremental, reconciliation gate, API)
         run: pytest -q tests/integration
 
-      - name: End-to-end run at full scale (5,000 customers, ~46,000 transactions)
+      - name: Cut-over rehearsal at full scale (10 business days, ~46,000 transactions)
         run: |
-          python -m migration reset-target
-          python -m migration seed --scale 1
-          python -m migration run --mode full
-          python -m migration changes
-          python -m migration run --mode incremental
+          python -m migration simulate --days 10
+          python -m migration export --out powerbi-export
           cat reports/latest.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload run reports
+      - name: Upload run reports and the dashboard data
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: migration-reports
-          path: reports/
+          path: |
+            reports/
+            powerbi-export/
+
+  # Power BI dashboard: model loaded with the Tabular Object Model + best-practice rules + report references
+  powerbi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          pip install pytest==8.3.4 pythonnet==3.2.1
+          pip install --no-deps semantic-link-sempy==0.14.3
+      - name: Dashboard quality gate
+        run: python scripts/validate_model.py | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Quality gate tests
+        run: pytest -q tests/powerbi

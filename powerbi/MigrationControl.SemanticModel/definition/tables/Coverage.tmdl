@@ -1,0 +1,135 @@
+/// After each run: legacy rows of each table that are migrated, waiting in the backlog or merged.
+table Coverage
+
+	/// Rows in the legacy system (most recent run in the selection).
+	measure 'Legacy Rows' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Legacy Rows Count] ), Runs[Run ID] = LastRunId )
+		formatString: #,0
+		displayFolder: 2. Coverage
+
+	/// Legacy rows already in the new systems (most recent run in the selection).
+	measure 'Migrated Rows' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Migrated Rows Count] ), Runs[Run ID] = LastRunId )
+		formatString: #,0
+		displayFolder: 2. Coverage
+
+	/// Legacy rows rejected and waiting for a fix at the source (most recent run in the selection).
+	measure 'Rows Waiting' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Rejected Rows Count] ), Runs[Run ID] = LastRunId )
+		formatString: #,0
+		displayFolder: 2. Coverage
+
+	/// Duplicate customer registrations merged into an existing customer.
+	measure 'Merged Duplicates' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Merged Rows Count] ), Runs[Run ID] = LastRunId )
+		formatString: #,0
+		displayFolder: 2. Coverage
+
+	/// Share of legacy rows already migrated.
+	measure 'Migrated %' = DIVIDE ( [Migrated Rows], [Legacy Rows] )
+		formatString: 0.0%
+		displayFolder: 2. Coverage
+
+	/// Share of legacy rows that are migrated or in the backlog: must always be 100% (nothing lost).
+	measure 'Accounted For %' = DIVIDE ( [Migrated Rows] + [Rows Waiting], [Legacy Rows] )
+		formatString: 0.0%
+		displayFolder: 2. Coverage
+
+	/// Net amount of the migrated transactions (most recent run in the selection).
+	measure 'Money Migrated' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Migrated Amount] ), Runs[Run ID] = LastRunId )
+		formatString: "R$" #,0
+		displayFolder: 3. Money
+
+	/// Difference between the legacy and the new systems for the migrated transactions: must be zero.
+	measure 'Money Difference' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Amount Difference] ), Runs[Run ID] = LastRunId )
+		formatString: "R$" #,0.00
+		displayFolder: 3. Money
+
+	/// Money in transactions still rejected (needs a business decision before the cut-over).
+	measure 'Money on Hold' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Coverage[Held Amount] ), Runs[Run ID] = LastRunId )
+		formatString: "R$" #,0
+		displayFolder: 3. Money
+
+	column 'Run ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Run ID
+
+	column 'Source Table'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Source Table
+
+	column 'Legacy Rows Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Legacy Rows
+
+	column 'Migrated Rows Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Migrated Rows
+
+	column 'Rejected Rows Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Rejected Rows
+
+	column 'Merged Rows Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Merged Rows
+
+	column 'Migrated Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Migrated Amount
+
+	column 'Amount Difference'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Amount Difference
+
+	column 'Held Amount'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Held Amount
+
+	partition Coverage = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "coverage.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Run ID", Int64.Type }, { "Source Table", type text }, { "Legacy Rows", Int64.Type }, { "Migrated Rows", Int64.Type }, { "Rejected Rows", Int64.Type }, { "Merged Rows", Int64.Type }, { "Migrated Amount", Currency.Type }, { "Amount Difference", Currency.Type }, { "Held Amount", Currency.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

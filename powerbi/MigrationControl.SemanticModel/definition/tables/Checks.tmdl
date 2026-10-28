@@ -1,0 +1,110 @@
+/// Reconciliation checks of every run (critical checks are the release gate).
+table Checks
+
+	/// Critical checks of the most recent run in the selection.
+	measure 'Critical Checks' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( COUNTROWS ( Checks ), Checks[Severity] = "Critical", Runs[Run ID] = LastRunId )
+		formatString: #,0
+		displayFolder: 5. Reconciliation
+
+	/// Critical checks that passed in the most recent run in the selection.
+	measure 'Critical Checks Passed' =
+			VAR LastRunId = [Last Run]
+			RETURN
+				CALCULATE ( COUNTROWS ( Checks ), Checks[Severity] = "Critical", Checks[Passed] = 1, Runs[Run ID] = LastRunId ) + 0
+		formatString: #,0
+		displayFolder: 5. Reconciliation
+
+	/// "7 / 7" style label for the gate card.
+	measure 'Critical Checks Label' = FORMAT ( [Critical Checks Passed], "0" ) & " / " & FORMAT ( [Critical Checks], "0" )
+		displayFolder: 5. Reconciliation
+
+	/// ✔ when the check passed, ✖ when it failed (one check in one run).
+	measure 'Check Result' =
+			VAR Lowest = MIN ( Checks[Passed] )
+			RETURN IF ( NOT ISBLANK ( Lowest ), IF ( Lowest = 1, "✔", "✖" ) )
+		displayFolder: 5. Reconciliation
+
+	/// Check result in the most recent run in the selection.
+	measure 'Last Run Result' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( [Check Result], Runs[Run ID] = LastRunId )
+		displayFolder: 5. Reconciliation
+
+	/// Value found in the legacy system, most recent run in the selection.
+	measure 'Last Run Legacy Value' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( MAX ( Checks[Legacy Value] ), Runs[Run ID] = LastRunId )
+		displayFolder: 5. Reconciliation
+
+	/// Value found in the new systems, most recent run in the selection.
+	measure 'Last Run New Value' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( MAX ( Checks[New Systems Value] ), Runs[Run ID] = LastRunId )
+		displayFolder: 5. Reconciliation
+
+	/// Explanation of the result, most recent run in the selection.
+	measure 'Last Run Detail' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( MAX ( Checks[Detail] ), Runs[Run ID] = LastRunId )
+		displayFolder: 5. Reconciliation
+
+	/// Share of checks that passed.
+	measure 'Check Pass Rate' = DIVIDE ( SUM ( Checks[Passed] ), COUNTROWS ( Checks ) )
+		formatString: 0.0%
+		displayFolder: 5. Reconciliation
+
+	column 'Run ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Run ID
+
+	column Check
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Check
+
+	column Severity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Severity
+
+	column Passed
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Passed
+
+	column 'Legacy Value'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Legacy Value
+
+	column 'New Systems Value'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: New Systems Value
+
+	column Detail
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Detail
+
+	partition Checks = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "checks.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Run ID", Int64.Type }, { "Check", type text }, { "Severity", type text }, { "Passed", Int64.Type }, { "Legacy Value", type text }, { "New Systems Value", type text }, { "Detail", type text } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

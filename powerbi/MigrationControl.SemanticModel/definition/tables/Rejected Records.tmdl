@@ -1,0 +1,59 @@
+/// Records rejected right now, with the reason (ids only: no personal data leaves the database).
+table 'Rejected Records'
+
+	/// Records rejected right now.
+	measure 'Records Rejected Now' = COUNTROWS ( 'Rejected Records' )
+		formatString: #,0
+		displayFolder: 4. Backlog
+
+	/// Money in the transactions rejected right now.
+	measure 'Amount Rejected Now' = SUM ( 'Rejected Records'[Amount] )
+		formatString: "R$" #,0.00
+		displayFolder: 4. Backlog
+
+	column 'Source Table'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Source Table
+
+	column 'Source ID'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Source ID
+
+	column Reason
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Reason
+
+	column 'Rejected In Run'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Run ID
+
+	column 'Rejected At'
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: Rejected At
+
+	column Amount
+		dataType: decimal
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Amount
+
+	partition 'Rejected Records' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "rejected_records.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Source Table", type text }, { "Source ID", Int64.Type }, { "Reason", type text }, { "Run ID", Int64.Type }, { "Rejected At", type datetime }, { "Amount", Currency.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

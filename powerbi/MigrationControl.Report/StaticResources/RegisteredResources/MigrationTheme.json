@@ -1,0 +1,24 @@
+{
+  "name": "Migration Control",
+  "dataColors": [
+    "#2563EB",
+    "#F2A541",
+    "#14B8A6",
+    "#E0604F",
+    "#8B5CF6",
+    "#16A34A",
+    "#94A3B8",
+    "#EC4899"
+  ],
+  "foreground": "#0F1B33",
+  "foregroundNeutralSecondary": "#5B6B85",
+  "background": "#FFFFFF",
+  "backgroundLight": "#F3F6FB",
+  "tableAccent": "#2563EB",
+  "good": "#2FB57C",
+  "neutral": "#F2A541",
+  "bad": "#E0604F",
+  "maximum": "#2563EB",
+  "center": "#BFD3F7",
+  "minimum": "#FFFFFF"
+}

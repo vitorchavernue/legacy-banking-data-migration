@@ -1,0 +1,63 @@
+/// Rows each run read from the legacy system, migrated and rejected, by table.
+table 'Run Volumes'
+
+	/// Legacy rows read by the run (full load reads everything, incremental only changes and retries).
+	measure 'Rows Read' = SUM ( 'Run Volumes'[Rows Read Count] )
+		formatString: #,0
+		displayFolder: 6. Run Volumes
+
+	/// Rows written to the new systems by the run.
+	measure 'Rows Written' = SUM ( 'Run Volumes'[Rows Migrated Count] )
+		formatString: #,0
+		displayFolder: 6. Run Volumes
+
+	/// Rows the run could not migrate (new problems or retries still failing).
+	measure 'Rows Rejected in Run' = SUM ( 'Run Volumes'[Rows Rejected Count] )
+		formatString: #,0
+		displayFolder: 6. Run Volumes
+
+	column 'Run ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Run ID
+
+	column 'Source Table'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Source Table
+
+	column 'Rows Read Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Rows Read
+
+	column 'Rows Migrated Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Rows Migrated
+
+	column 'Rows Rejected Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Rows Rejected
+
+	partition 'Run Volumes' = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "run_volumes.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Run ID", Int64.Type }, { "Source Table", type text }, { "Rows Read", Int64.Type }, { "Rows Migrated", Int64.Type }, { "Rows Rejected", Int64.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,94 @@
+/// One row per migration run (full or incremental), with its business day and result.
+table Runs
+
+	/// Number of migration runs.
+	measure 'Run Count' = COUNTROWS ( Runs )
+		formatString: #,0
+		displayFolder: 1. Runs
+
+	/// Runs whose reconciliation gate failed (the cut-over must not happen after a failed run).
+	measure 'Failed Runs' = CALCULATE ( COUNTROWS ( Runs ), Runs[Status] = "Failed" )
+		formatString: #,0
+		displayFolder: 1. Runs
+
+	/// Most recent run in the selection.
+	measure 'Last Run' = MAX ( Runs[Run ID] )
+		formatString: 0
+		displayFolder: 1. Runs
+
+	/// Result of the most recent run in the selection: PASSED or FAILED.
+	measure 'Gate Status' =
+			VAR LastRunId = [Last Run]
+			RETURN UPPER ( CALCULATE ( MAX ( Runs[Status] ), Runs[Run ID] = LastRunId ) )
+		displayFolder: 1. Runs
+
+	/// Business day of the most recent run in the selection.
+	measure 'Last Business Day' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( MAX ( Runs[Business Date] ), Runs[Run ID] = LastRunId )
+		formatString: dd mmm yyyy
+		displayFolder: 1. Runs
+
+	/// Average duration of the runs, in seconds.
+	measure 'Average Duration (s)' = AVERAGE ( Runs[Duration (s)] )
+		formatString: #,0.0
+		displayFolder: 1. Runs
+
+	column 'Run ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Run ID
+
+	column 'Business Date'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		summarizeBy: none
+		sourceColumn: Business Date
+
+	column Mode
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Mode
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Status
+
+	column 'Started At'
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: Started At
+
+	column 'Duration (s)'
+		dataType: double
+		formatString: #,0.0
+		summarizeBy: none
+		sourceColumn: Duration (s)
+
+	column 'Profiles Refreshed'
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Profiles Refreshed
+
+	/// Axis label: business day and run number, e.g. "09 Nov #6".
+	column 'Run Label' = FORMAT ( Runs[Business Date], "dd mmm" ) & " #" & Runs[Run ID]
+		dataType: string
+		summarizeBy: none
+		sortByColumn: 'Run ID'
+
+	partition Runs = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "runs.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Run ID", Int64.Type }, { "Business Date", type datetime }, { "Mode", type text }, { "Status", type text }, { "Started At", type datetime }, { "Duration (s)", type number }, { "Profiles Refreshed", Int64.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+

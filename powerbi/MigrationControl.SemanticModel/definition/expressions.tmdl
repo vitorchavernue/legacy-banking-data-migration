@@ -1,0 +1,5 @@
+/// Folder with the files exported by "python -m migration export" (must end with a backslash).
+expression DataFolder = "C:\dev\github\vitorchavernue\legacy-banking-data-migration\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	annotation PBI_ResultType = Text
+

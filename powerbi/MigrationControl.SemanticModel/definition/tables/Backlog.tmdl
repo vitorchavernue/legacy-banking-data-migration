@@ -1,0 +1,72 @@
+/// After each run: rejected records waiting for a fix, by table and reason.
+table Backlog
+
+	/// Rejected records waiting for a fix (most recent run in the selection).
+	measure 'Backlog Records' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Backlog[Records Count] ), Runs[Run ID] = LastRunId )
+		formatString: #,0
+		displayFolder: 4. Backlog
+
+	/// Money in the rejected transactions of the backlog (most recent run in the selection).
+	measure 'Backlog Amount' =
+			VAR LastRunId = [Last Run]
+			RETURN CALCULATE ( SUM ( Backlog[Amount Value] ), Runs[Run ID] = LastRunId )
+		formatString: "R$" #,0
+		displayFolder: 4. Backlog
+
+	/// Backlog after the first run (the full load).
+	measure 'Backlog at Full Load' =
+			VAR FirstRunId = CALCULATE ( MIN ( Runs[Run ID] ), ALL ( Runs ) )
+			RETURN CALCULATE ( SUM ( Backlog[Records Count] ), Runs[Run ID] = FirstRunId )
+		formatString: #,0
+		displayFolder: 4. Backlog
+
+	/// Share of the initial backlog already fixed at the source.
+	measure 'Backlog Burn-down %' = 1 - DIVIDE ( [Backlog Records], [Backlog at Full Load] )
+		formatString: 0.0%
+		displayFolder: 4. Backlog
+
+	column 'Run ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Run ID
+
+	column 'Source Table'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Source Table
+
+	column Reason
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Reason
+
+	column 'Records Count'
+		dataType: int64
+		isHidden
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: Records
+
+	column 'Amount Value'
+		dataType: decimal
+		isHidden
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: Amount
+
+	partition Backlog = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document ( File.Contents ( DataFolder & "backlog.parquet" ) ),
+					Typed = Table.TransformColumnTypes ( Source, { { "Run ID", Int64.Type }, { "Source Table", type text }, { "Reason", type text }, { "Records", Int64.Type }, { "Amount", Currency.Type } } )
+				in
+					Typed
+
+	annotation PBI_ResultType = Table
+
