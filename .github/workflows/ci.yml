@@ -64,8 +64,14 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
-      - name: Integration tests (full load, incremental, reconciliation gate, API)
-        run: pytest -q tests/integration
+      - name: Integration tests (full load, incremental, reconciliation gate, API, rehearsal)
+        run: |
+          set -o pipefail
+          pytest -q -rf tests/integration 2>&1 | tee pytest.log
+
+      - name: Show failing tests
+        if: failure()
+        run: grep -E "^(FAILED|ERROR|E  )" pytest.log | head -30 | sed 's/^/::error::/' 
 
       - name: Cut-over rehearsal at full scale (10 business days, ~46,000 transactions)
         run: |
