@@ -6,6 +6,8 @@
     python -m migration run --mode incremental
     python -m migration reset-target          # empty PostgreSQL and MongoDB (development only)
     python -m migration serve                 # read-only API for the apps and the ops team
+    python -m migration simulate --days 10    # cut-over rehearsal: full load + daily incremental runs
+    python -m migration export --out powerbi/data   # run history for the Power BI dashboard
 
 Exit code 1 when the reconciliation gate fails (CI and schedulers stop the pipeline).
 """
@@ -35,6 +37,11 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("reset-target", help="empty PostgreSQL (core, migration) and the MongoDB profiles")
     run = sub.add_parser("run", help="migrate and reconcile")
     run.add_argument("--mode", choices=["full", "incremental"], default="full")
+    sim = sub.add_parser("simulate", help="cut-over rehearsal with daily runs (recreates the legacy data)")
+    sim.add_argument("--days", type=int, default=10)
+    sim.add_argument("--scale", type=float, default=1.0)
+    exp = sub.add_parser("export", help="export the run history for the Power BI dashboard")
+    exp.add_argument("--out", default="powerbi/data")
     serve = sub.add_parser("serve", help="start the API")
     serve.add_argument("--port", type=int, default=8000)
     args = parser.parse_args(argv)
@@ -71,6 +78,17 @@ def main(argv: list[str] | None = None) -> int:
         result = run_migration(args.mode, settings)
         print(json.dumps({"run_id": result["run_id"], "status": result["status"], "stats": result["stats"]}))
         return 0 if result["status"] == "passed" else 1
+    if args.command == "simulate":
+        from migration.simulate import simulate
+
+        results = simulate(days=args.days, scale=args.scale, settings=settings)
+        print(json.dumps([{"run_id": r["run_id"], "status": r["status"]} for r in results]))
+        return 0
+    if args.command == "export":
+        from migration.export import export
+
+        print(json.dumps(export(args.out, settings)))
+        return 0
     if args.command == "serve":
         import uvicorn
 

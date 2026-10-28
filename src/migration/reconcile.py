@@ -8,7 +8,7 @@ the business needs to know (merged duplicates, money held in rejected records).
 from __future__ import annotations
 
 from collections import Counter, defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal
 
 from pymongo.database import Database
@@ -50,8 +50,17 @@ def _accounted(name: str, legacy: set, migrated: set, rejected: set) -> Check:
     )
 
 
-def run_checks(legacy: Engine, target: Connection, mongo: Database, tz: str) -> list[Check]:
+@dataclass
+class Snapshot:
+    """State of the migration after a run, kept per run for the monitoring dashboard."""
+
+    coverage: list[dict] = field(default_factory=list)  # one row per legacy table
+    backlog: list[dict] = field(default_factory=list)  # rejected records by table and reason
+
+
+def run_checks(legacy: Engine, target: Connection, mongo: Database, tz: str) -> tuple[list[Check], Snapshot]:
     checks: list[Check] = []
+    snapshot = Snapshot()
     with legacy.connect() as src:
         legacy_customers = _set(src, l_cust.c.CD_CLIENTE)
         legacy_accounts = dict(src.execute(select(l_acc.c.CD_CONTA, l_acc.c.CD_CLIENTE)).all())
@@ -66,9 +75,10 @@ def run_checks(legacy: Engine, target: Connection, mongo: Database, tz: str) -> 
 
     rejected = defaultdict(set)
     reasons: Counter = Counter()
-    for table, source_id, reason in target.execute(
-        select(t.rejected_record.c.source_table, t.rejected_record.c.source_id, t.rejected_record.c.reason)
-    ):
+    rejected_rows = list(
+        target.execute(select(t.rejected_record.c.source_table, t.rejected_record.c.source_id, t.rejected_record.c.reason))
+    )
+    for table, source_id, reason in rejected_rows:
         rejected[table].add(source_id)
         reasons[f"{table}: {reason}"] += 1
 
@@ -214,7 +224,35 @@ def run_checks(legacy: Engine, target: Connection, mongo: Database, tz: str) -> 
     # 5. What still needs fixing in the legacy system
     top = "; ".join(f"{k} = {v}" for k, v in reasons.most_common(6)) or "none"
     checks.append(Check("Rejected records by reason", "info", True, detail=top))
-    return checks
+
+    # 6. Snapshot for the dashboard: coverage per table and the rejected backlog by reason
+    for table, legacy_ids, migrated_ids in (
+        ("TB_CLIENTE", legacy_customers, set(key_map)),
+        ("TB_CONTA", set(legacy_accounts), set(target_accounts)),
+        ("TB_LANCAMENTO", set(legacy_txn), set(target_txn)),
+    ):
+        is_txn = table == "TB_LANCAMENTO"
+        snapshot.coverage.append(
+            {
+                "source_table": table,
+                "legacy_rows": len(legacy_ids),
+                "migrated_rows": len(migrated_ids & legacy_ids),
+                "rejected_rows": len((rejected[table] - migrated_ids) & legacy_ids),
+                "merged_rows": merged if table == "TB_CLIENTE" else 0,
+                "migrated_amount": target_total if is_txn else None,
+                "amount_difference": source_total - target_total if is_txn else None,
+                "held_amount": held if is_txn else None,
+            }
+        )
+    backlog: dict[tuple[str, str], dict] = {}
+    for table, source_id, reason in rejected_rows:
+        row = backlog.setdefault((table, reason), {"source_table": table, "reason": reason, "records": 0, "amount": Decimal("0")})
+        row["records"] += 1
+        txn = legacy_txn.get(source_id) if table == "TB_LANCAMENTO" else None
+        if txn is not None and txn.VL_LANCAMENTO is not None:
+            row["amount"] += abs(Decimal(txn.VL_LANCAMENTO))
+    snapshot.backlog = list(backlog.values())
+    return checks, snapshot
 
 
 def gate(checks: list[Check]) -> bool:

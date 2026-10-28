@@ -170,7 +170,7 @@ def load(engine: Engine, rows: dict[str, list[dict]], batch: int = 2_000) -> dic
     return counts
 
 
-def apply_changes(engine: Engine, now: datetime | None = None, seed: int = 7) -> dict[str, int]:
+def apply_changes(engine: Engine, now: datetime | None = None, seed: int = 7, fix_cpfs: bool = True) -> dict[str, int]:
     """Day-to-day activity in the legacy system after the initial load, for the incremental run.
 
     * customers update their e-mail
@@ -191,7 +191,7 @@ def apply_changes(engine: Engine, now: datetime | None = None, seed: int = 7) ->
             )
             changes["emails_updated"] += 1
 
-        for cid, raw in conn.execute(select(customers.c.CD_CLIENTE, customers.c.NR_CPF)).all():
+        for cid, raw in conn.execute(select(customers.c.CD_CLIENTE, customers.c.NR_CPF)).all() if fix_cpfs else []:
             digits = "".join(ch for ch in raw or "" if ch.isdigit()).zfill(11)
             if not cpf_is_valid(digits):
                 fixed = make_cpf(random.Random(cid))
@@ -259,6 +259,80 @@ def apply_changes(engine: Engine, now: datetime | None = None, seed: int = 7) ->
         )
         conn.execute(update(accounts).where(accounts.c.CD_CONTA == max_a).values(CD_SITUACAO="E", DT_ULTIMA_ALTERACAO=now))
     return changes
+
+
+def fix_some_defects(engine: Engine, share: float, now: datetime | None = None, seed: int = 11) -> dict[str, int]:
+    """The business works the rejected list: each day a share of each kind of defect is fixed at the source.
+
+    * wrong CPF typed again from the customer's document
+    * zero or negative amounts corrected from the bank statement
+    * transactions dated in the future moved to the right date
+    * accounts and transactions pointing to records that do not exist re-linked by the back office
+    """
+    rng = random.Random(seed)
+    now = (now or datetime.now()).replace(microsecond=0)
+    fixed = {"cpf": 0, "amount": 0, "future_date": 0, "orphan_account": 0, "orphan_transaction": 0}
+
+    def pick(items: list) -> list:
+        return rng.sample(items, k=round(len(items) * share)) if items else []
+
+    with engine.begin() as conn:
+        bad_cpf = [
+            cid
+            for cid, raw in conn.execute(select(customers.c.CD_CLIENTE, customers.c.NR_CPF))
+            if not cpf_is_valid("".join(ch for ch in raw or "" if ch.isdigit()).zfill(11))
+        ]
+        for cid in pick(bad_cpf):
+            conn.execute(
+                update(customers)
+                .where(customers.c.CD_CLIENTE == cid)
+                .values(NR_CPF=make_cpf(random.Random(cid)), DT_ULTIMA_ALTERACAO=now)
+            )
+            fixed["cpf"] += 1
+
+        bad_amount = [r[0] for r in conn.execute(select(transactions.c.CD_LANCAMENTO).where(transactions.c.VL_LANCAMENTO <= 0))]
+        for tid in pick(bad_amount):
+            conn.execute(
+                update(transactions)
+                .where(transactions.c.CD_LANCAMENTO == tid)
+                .values(VL_LANCAMENTO=Decimal(rng.randint(500, 50_000)) / 100, DT_ULTIMA_ALTERACAO=now)
+            )
+            fixed["amount"] += 1
+
+        future = [r[0] for r in conn.execute(select(transactions.c.CD_LANCAMENTO).where(transactions.c.DT_LANCAMENTO > now))]
+        for tid in pick(future):
+            conn.execute(
+                update(transactions)
+                .where(transactions.c.CD_LANCAMENTO == tid)
+                .values(DT_LANCAMENTO=now - timedelta(days=rng.randint(1, 30)), DT_ULTIMA_ALTERACAO=now)
+            )
+            fixed["future_date"] += 1
+
+        customer_ids = [r[0] for r in conn.execute(select(customers.c.CD_CLIENTE))]
+        known_customers = set(customer_ids)
+        orphan_accounts = [
+            aid for aid, owner in conn.execute(select(accounts.c.CD_CONTA, accounts.c.CD_CLIENTE)) if owner not in known_customers
+        ]
+        for aid in pick(orphan_accounts):
+            conn.execute(
+                update(accounts)
+                .where(accounts.c.CD_CONTA == aid)
+                .values(CD_CLIENTE=rng.choice(customer_ids), DT_ULTIMA_ALTERACAO=now)
+            )
+            fixed["orphan_account"] += 1
+
+        account_ids = [r[0] for r in conn.execute(select(accounts.c.CD_CONTA))]
+        known_accounts = set(account_ids)
+        txn_accounts = conn.execute(select(transactions.c.CD_LANCAMENTO, transactions.c.CD_CONTA))
+        orphan_txn = [tid for tid, acc in txn_accounts if acc not in known_accounts]
+        for tid in pick(orphan_txn):
+            conn.execute(
+                update(transactions)
+                .where(transactions.c.CD_LANCAMENTO == tid)
+                .values(CD_CONTA=rng.choice(account_ids), DT_ULTIMA_ALTERACAO=now)
+            )
+            fixed["orphan_transaction"] += 1
+    return fixed
 
 
 def create_database_if_missing(server_url: str, name: str) -> None:

@@ -89,6 +89,7 @@ run = Table(
     metadata,
     Column("run_id", Integer, primary_key=True, autoincrement=True),
     Column("mode", Text, nullable=False),  # full | incremental
+    Column("business_date", Date),  # business day the run belongs to (cut-over calendar)
     Column("status", Text, nullable=False),  # running | passed | failed | error
     Column("started_at", TS, nullable=False, server_default=text("now()")),
     Column("finished_at", TS),
@@ -141,6 +142,35 @@ reconciliation_check = Table(
     Column("source_value", Text),
     Column("target_value", Text),
     Column("detail", Text),
+    schema="migration",
+)
+
+
+# After each run: how much of each legacy table is migrated, rejected or merged (dashboard history)
+run_coverage = Table(
+    "run_coverage",
+    metadata,
+    Column("run_id", Integer, primary_key=True),
+    Column("source_table", Text, primary_key=True),
+    Column("legacy_rows", Integer, nullable=False),
+    Column("migrated_rows", Integer, nullable=False),
+    Column("rejected_rows", Integer, nullable=False),
+    Column("merged_rows", Integer, nullable=False),
+    Column("migrated_amount", Numeric(18, 2)),
+    Column("amount_difference", Numeric(18, 2)),
+    Column("held_amount", Numeric(18, 2)),
+    schema="migration",
+)
+
+# After each run: rejected records still waiting for a fix, by table and reason
+backlog_snapshot = Table(
+    "backlog_snapshot",
+    metadata,
+    Column("run_id", Integer, primary_key=True),
+    Column("source_table", Text, primary_key=True),
+    Column("reason", Text, primary_key=True),
+    Column("records", Integer, nullable=False),
+    Column("amount", Numeric(18, 2), nullable=False),
     schema="migration",
 )
 

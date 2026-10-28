@@ -13,7 +13,7 @@ from __future__ import annotations
 import logging
 import time
 from collections.abc import Iterator
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 from sqlalchemy import Engine, Table, insert, select, update
@@ -52,7 +52,7 @@ def _source_rows(
             yield page
 
 
-def run(mode: str = "full", settings: Settings | None = None) -> dict:
+def run(mode: str = "full", settings: Settings | None = None, business_date: date | None = None) -> dict:
     if mode not in ("full", "incremental"):
         raise ValueError("mode must be 'full' or 'incremental'")
     settings = settings or get_settings()
@@ -63,7 +63,8 @@ def run(mode: str = "full", settings: Settings | None = None) -> dict:
 
     t.create_all(target)
     with target.begin() as conn:
-        run_id = conn.execute(insert(t.run).values(mode=mode, status="running").returning(t.run.c.run_id)).scalar_one()
+        values = {"mode": mode, "status": "running", "business_date": business_date or started.date()}
+        run_id = conn.execute(insert(t.run).values(**values).returning(t.run.c.run_id)).scalar_one()
     log.info("run %s started (%s)", run_id, mode)
     stats: dict = {"tables": {}}
 
@@ -158,7 +159,7 @@ def run(mode: str = "full", settings: Settings | None = None) -> dict:
 
         # 7. Reconciliation gate
         with target.connect() as conn:
-            checks = reconcile.run_checks(legacy, conn, mongo, tz)
+            checks, snapshot = reconcile.run_checks(legacy, conn, mongo, tz)
         status = "passed" if reconcile.gate(checks) else "failed"
         stats["duration_s"] = round(time.monotonic() - clock, 1)
         with target.begin() as conn:
@@ -177,6 +178,10 @@ def run(mode: str = "full", settings: Settings | None = None) -> dict:
                     for c in checks
                 ],
             )
+            # history for the monitoring dashboard: coverage per table and the rejected backlog
+            conn.execute(t.run_coverage.insert(), [{"run_id": run_id, **row} for row in snapshot.coverage])
+            if snapshot.backlog:
+                conn.execute(t.backlog_snapshot.insert(), [{"run_id": run_id, **row} for row in snapshot.backlog])
             conn.execute(
                 update(t.run).where(t.run.c.run_id == run_id).values(status=status, stats=stats, finished_at=sa_func.now())
             )
