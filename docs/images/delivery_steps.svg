@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="713" viewBox="0 0 1920 713">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D0C0E"/><stop offset="1" stop-color="#17151A"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#FCD34D"/><stop offset="1" stop-color="#B45309"/></linearGradient>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1800 0) scale(900)">
+    <stop stop-color="#F59E0B" stop-opacity="0.16"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity="0.04"/></pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#FCD34D"/></marker>
+</defs>
+<rect width="1920" height="713" rx="28" fill="url(#bg)"/>
+<rect width="1920" height="713" rx="28" fill="url(#glow)"/>
+<rect width="1920" height="713" rx="28" fill="url(#dots)"/>
+<g id="Header">
+<circle cx="88" cy="78" r="30" fill="none" stroke="url(#accent)" stroke-width="2.5"/><g transform="translate(70.0 60.0) scale(1.5000)" fill="none" stroke="#FCD34D" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="6.5" cy="6" rx="3.5" ry="1.8"/><path d="M3 6v11c0 1 1.6 1.8 3.5 1.8S10 18 10 17V6"/><ellipse cx="17.5" cy="6" rx="3.5" ry="1.8"/><path d="M14 6v11c0 1 1.6 1.8 3.5 1.8S21 18 21 17V6"/><path d="M10 12h4"/></g>
+<text x="136.0" y="70.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#FCD34D" text-anchor="start" letter-spacing="4">HOW IT WAS BUILT</text>
+<text x="136.0" y="108.0" font-family="Inter, Segoe UI, sans-serif" font-size="38" font-weight="800" fill="#F4F1F5" text-anchor="start">From the legacy core to the cut-over</text>
+<text x="1860.0" y="70.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="500" fill="#B0A9B5" text-anchor="end">Python · SQL Server · PostgreSQL · MongoDB · FastAPI · Power BI</text>
+<text x="1860.0" y="100.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="400" fill="#7E7684" text-anchor="end">plan → build → prove → run</text>
+<rect x="60" y="138" width="1800" height="1.5" fill="#37333C"/><rect x="60" y="137.5" width="120" height="2.5" fill="url(#accent)"/>
+</g>
+<rect x="179.1" y="254" width="1561.7" height="3" rx="1.5" fill="url(#accent)"/>
+<rect x="60.0" y="188" width="498.6" height="34" rx="17" fill="#1B191E" stroke="#37333C"/>
+<text x="309.3" y="211.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FCD34D" text-anchor="middle" letter-spacing="4">PLAN</text>
+<rect x="580.6" y="188" width="758.9" height="34" rx="17" fill="#1B191E" stroke="#37333C"/>
+<text x="960.0" y="211.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FCD34D" text-anchor="middle" letter-spacing="4">BUILD</text>
+<rect x="1361.4" y="188" width="498.6" height="34" rx="17" fill="#1B191E" stroke="#37333C"/>
+<text x="1610.7" y="211.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FCD34D" text-anchor="middle" letter-spacing="4">PROVE &amp; RUN</text>
+<circle cx="179.1" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="179.1" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">1</text>
+<rect x="60.0" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="82.0" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="110.0" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(93.0 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5 20 20"/></g>
+<text x="82.0" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">Assess</text>
+<text x="82.0" y="467.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Profile the legacy</text><text x="82.0" y="490.6" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">tables and list the</text><text x="82.0" y="513.8" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">defects: duplicates,</text><text x="82.0" y="537.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">lost zeros, broken</text><text x="82.0" y="560.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">accents, orphans.</text>
+<rect x="76.0" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="90.0" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="90.0" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">docs/mapping.md</text>
+<circle cx="439.4" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="439.4" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">2</text>
+<rect x="320.3" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="342.3" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="370.3" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(353.3 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></g>
+<text x="342.3" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">Design</text>
+<text x="342.3" y="467.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">PostgreSQL as system of</text><text x="342.3" y="490.6" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">record, MongoDB profile</text><text x="342.3" y="513.8" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">for the apps,</text><text x="342.3" y="537.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">reconciliation as a</text><text x="342.3" y="560.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">release gate.</text>
+<rect x="336.3" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="350.3" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="350.3" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">docs/adr</text>
+<circle cx="699.7" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="699.7" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">3</text>
+<rect x="580.6" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="602.6" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="630.6" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(613.6 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></g>
+<text x="602.6" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="800" fill="#F4F1F5" text-anchor="start">Extract and clean</text>
+<text x="602.6" y="465.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Keyset reads by</text><text x="602.6" y="488.2" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">watermark and one</text><text x="602.6" y="511.5" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">tested rule per field,</text><text x="602.6" y="534.8" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">with rejected records</text><text x="602.6" y="558.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">and reasons.</text>
+<rect x="596.6" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="610.6" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="610.6" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">extract · rules</text>
+<circle cx="960.0" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="960.0" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">4</text>
+<rect x="840.9" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="862.9" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="890.9" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(873.9 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.8"/><path d="M5 5.5v13c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-13"/><path d="M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></g>
+<text x="862.9" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">Load</text>
+<text x="862.9" y="467.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Idempotent upserts into</text><text x="862.9" y="490.6" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">PostgreSQL and one</text><text x="862.9" y="513.8" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">MongoDB document per</text><text x="862.9" y="537.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">customer.</text>
+<rect x="856.9" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="870.9" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="870.9" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">load.py</text>
+<circle cx="1220.3" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="1220.3" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">5</text>
+<rect x="1101.1" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="1123.1" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1151.1" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(1134.1 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.9-4.3-1.7-7.5-5.3-7.5-9.9V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></g>
+<text x="1123.1" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">Gate the release</text>
+<text x="1123.1" y="467.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">7 critical checks after</text><text x="1123.1" y="490.6" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">every run; a failure</text><text x="1123.1" y="513.8" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">alerts and stops the</text><text x="1123.1" y="537.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">pipeline.</text>
+<rect x="1117.1" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="1131.1" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="1131.1" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">reconcile.py</text>
+<circle cx="1480.6" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="1480.6" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">6</text>
+<rect x="1361.4" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="1383.4" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1411.4" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(1394.4 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.3l2.6 2.6 5.4-5.6"/></g>
+<text x="1383.4" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">Rehearse</text>
+<text x="1383.4" y="467.3" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">10 business days of</text><text x="1383.4" y="490.6" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">runs: backlog −93%, a</text><text x="1383.4" y="513.8" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">manual edit caught by</text><text x="1383.4" y="537.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">the gate and repaired.</text>
+<rect x="1377.4" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="1391.4" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="1391.4" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">simulate.py · powerbi</text>
+<circle cx="1740.9" cy="255.5" r="17" fill="#0D0C0E" stroke="#FCD34D" stroke-width="2.5"/>
+<text x="1740.9" y="262.0" font-family="Inter, Segoe UI, sans-serif" font-size="16" font-weight="800" fill="#F4F1F5" text-anchor="middle">7</text>
+<rect x="1621.7" y="300" width="238.3" height="373.6" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="1643.7" y="300" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1671.7" cy="358" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(1654.7 341.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M10 8.5l5 3.5-5 3.5z"/></g>
+<text x="1643.7" y="428.0" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="800" fill="#F4F1F5" text-anchor="start">Cut over and serve</text>
+<text x="1643.7" y="465.0" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Runbook with rollback,</text><text x="1643.7" y="488.2" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">read-only API for the</text><text x="1643.7" y="511.5" font-family="Inter, Segoe UI, sans-serif" font-size="15.5" font-weight="400" fill="#B0A9B5" text-anchor="start">apps and the ops team.</text>
+<rect x="1637.7" y="605.5" width="206.3" height="48" rx="12" fill="#232027"/>
+<text x="1651.7" y="624.5" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">DELIVERABLE</text>
+<text x="1651.7" y="643.5" font-family="JetBrains Mono, Consolas, monospace" font-size="12.5" font-weight="600" fill="#5EEAD4" text-anchor="start">runbook · api</text>
+</svg>

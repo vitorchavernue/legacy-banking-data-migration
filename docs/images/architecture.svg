@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1334" viewBox="0 0 1920 1334">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0D0C0E"/><stop offset="1" stop-color="#17151A"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#FCD34D"/><stop offset="1" stop-color="#B45309"/></linearGradient>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1800 0) scale(900)">
+    <stop stop-color="#F59E0B" stop-opacity="0.16"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/></radialGradient>
+  <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity="0.04"/></pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#FCD34D"/></marker>
+</defs>
+<rect width="1920" height="1334" rx="28" fill="url(#bg)"/>
+<rect width="1920" height="1334" rx="28" fill="url(#glow)"/>
+<rect width="1920" height="1334" rx="28" fill="url(#dots)"/>
+<g id="Header">
+<circle cx="88" cy="78" r="30" fill="none" stroke="url(#accent)" stroke-width="2.5"/><g transform="translate(70.0 60.0) scale(1.5000)" fill="none" stroke="#FCD34D" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="6.5" cy="6" rx="3.5" ry="1.8"/><path d="M3 6v11c0 1 1.6 1.8 3.5 1.8S10 18 10 17V6"/><ellipse cx="17.5" cy="6" rx="3.5" ry="1.8"/><path d="M14 6v11c0 1 1.6 1.8 3.5 1.8S21 18 21 17V6"/><path d="M10 12h4"/></g>
+<text x="136.0" y="70.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="600" fill="#FCD34D" text-anchor="start" letter-spacing="4">ARCHITECTURE</text>
+<text x="136.0" y="108.0" font-family="Inter, Segoe UI, sans-serif" font-size="38" font-weight="800" fill="#F4F1F5" text-anchor="start">Legacy Banking Data Migration</text>
+<text x="1860.0" y="70.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="500" fill="#B0A9B5" text-anchor="end">Python · SQL Server · PostgreSQL · MongoDB · FastAPI · Power BI</text>
+<text x="1860.0" y="100.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" font-weight="400" fill="#7E7684" text-anchor="end">legacy core banking → extract → transform → load → reconciliation gate → apps</text>
+<rect x="60" y="138" width="1800" height="1.5" fill="#37333C"/><rect x="60" y="137.5" width="120" height="2.5" fill="url(#accent)"/>
+</g>
+<rect x="60" y="172" width="1800" height="92" rx="20" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<circle cx="112" cy="218" r="26" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(96.0 202.0) scale(1.3333)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12.5" r="8"/><path d="M12 8v4.5l3 2"/></g>
+<text x="154.0" y="212.0" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FCD34D" text-anchor="start" letter-spacing="3">ORCHESTRATION</text>
+<text x="154.0" y="238.0" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#F4F1F5" text-anchor="start">One run per business day until the cut-over</text>
+<rect x="667.0" y="202.0" width="231.0" height="29" rx="14.5" fill="#232027" stroke="#5EEAD4" stroke-opacity="0.6" stroke-width="1.2"/><text x="679.0" y="220.5" font-family="JetBrains Mono, Consolas, monospace" font-size="15" font-weight="600" fill="#5EEAD4" text-anchor="start">python -m migration run</text>
+<rect x="924.0" y="202.0" width="108.0" height="29" rx="14.5" fill="#232027" stroke="#FCD34D" stroke-opacity="0.6" stroke-width="1.2"/><text x="936.0" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FCD34D" text-anchor="start">1  Extract</text>
+<path d="M1038.0 216.5 h14" stroke="#FCD34D" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1060.0" y="202.0" width="124.8" height="29" rx="14.5" fill="#232027" stroke="#FCD34D" stroke-opacity="0.6" stroke-width="1.2"/><text x="1072.0" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FCD34D" text-anchor="start">2  Transform</text>
+<path d="M1190.8 216.5 h14" stroke="#FCD34D" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1212.8" y="202.0" width="82.8" height="29" rx="14.5" fill="#232027" stroke="#FCD34D" stroke-opacity="0.6" stroke-width="1.2"/><text x="1224.8" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FCD34D" text-anchor="start">3  Load</text>
+<path d="M1301.6 216.5 h14" stroke="#FCD34D" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1323.6" y="202.0" width="124.8" height="29" rx="14.5" fill="#232027" stroke="#FCD34D" stroke-opacity="0.6" stroke-width="1.2"/><text x="1335.6" y="220.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#FCD34D" text-anchor="start">4  Reconcile</text>
+<rect x="1476.4" y="202.0" width="71.0" height="28" rx="14.0" fill="#232027" stroke="#34D399" stroke-opacity="0.6" stroke-width="1.2"/><text x="1488.4" y="219.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#34D399" text-anchor="start">passed</text>
+<rect x="1557.4" y="202.0" width="196.5" height="28" rx="14.0" fill="#232027" stroke="#F0614D" stroke-opacity="0.6" stroke-width="1.2"/><text x="1569.4" y="219.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F0614D" text-anchor="start">failed → alert, exit 1</text>
+<g id="Layer 1 Legacy core">
+<rect x="60.0" y="300" width="270.0" height="644.5" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="86.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="112.0" cy="356" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(95.0 339.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10.5v7.5M9.5 10.5v7.5M14.5 10.5v7.5M19 10.5v7.5"/><path d="M3 20.5h18"/></g>
+<text x="304.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#37333C" text-anchor="end">01</text>
+<text x="86.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">Legacy core</text>
+<text x="86.0" y="449.6" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#FCD34D" text-anchor="start">SQL Server · TB_*</text>
+<text x="86.0" y="470.5" font-family="Inter, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#B0A9B5" text-anchor="start">core banking system</text>
+<rect x="86.0" y="486.1" width="218.0" height="1" fill="#37333C"/>
+<rect x="86.0" y="500.1" width="218.0" height="28" rx="8" fill="#232027" stroke="#37333C"/>
+<text x="96.0" y="519.1" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="500" fill="#F4F1F5" text-anchor="start">TB_CLIENTE</text>
+<rect x="86.0" y="536.1" width="218.0" height="28" rx="8" fill="#232027" stroke="#37333C"/>
+<text x="96.0" y="555.1" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="500" fill="#F4F1F5" text-anchor="start">TB_CONTA</text>
+<rect x="86.0" y="572.1" width="218.0" height="28" rx="8" fill="#232027" stroke="#37333C"/>
+<text x="96.0" y="591.1" font-family="JetBrains Mono, Consolas, monospace" font-size="12" font-weight="500" fill="#F4F1F5" text-anchor="start">TB_LANCAMENTO</text>
+<circle cx="91.0" cy="637.1" r="3.5" fill="#F59E0B"/>
+<text x="104.0" y="642.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Duplicate registrations</text><text x="104.0" y="663.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">of the same customer</text>
+<circle cx="91.0" cy="691.7" r="3.5" fill="#F59E0B"/>
+<text x="104.0" y="696.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">CPFs that lost their</text><text x="104.0" y="718.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">leading zeros, broken</text><text x="104.0" y="739.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">accents</text>
+<circle cx="91.0" cy="767.6" r="3.5" fill="#F59E0B"/>
+<text x="104.0" y="772.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Codes instead of</text><text x="104.0" y="793.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">descriptions, orphan</text><text x="104.0" y="815.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">records</text>
+<rect x="78.0" y="866.5" width="234.0" height="60" rx="12" fill="#232027"/>
+<text x="92.0" y="893.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">Read only: the migration</text><text x="92.0" y="911.4" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">never writes here</text>
+</g>
+<path d="M336.0 622.2 h22" stroke="#FCD34D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 2 Extract">
+<rect x="366.0" y="300" width="270.0" height="644.5" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="392.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="418.0" cy="356" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(401.0 339.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></g>
+<text x="610.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#37333C" text-anchor="end">02</text>
+<text x="392.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">Extract</text>
+<text x="392.0" y="449.6" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#FCD34D" text-anchor="start">extract.py</text>
+<text x="392.0" y="470.5" font-family="Inter, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#B0A9B5" text-anchor="start">keyset pagination</text>
+<rect x="392.0" y="486.1" width="218.0" height="1" fill="#37333C"/>
+<circle cx="397.0" cy="515.1" r="3.5" fill="#F59E0B"/>
+<text x="410.0" y="520.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Pages by primary key</text><text x="410.0" y="541.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">(WHERE id &gt; last ORDER</text><text x="410.0" y="562.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">BY id): light on the</text><text x="410.0" y="584.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">legacy system</text>
+<circle cx="397.0" cy="612.3" r="3.5" fill="#F59E0B"/>
+<text x="410.0" y="617.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Full load or only rows</text><text x="410.0" y="638.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">changed since the</text><text x="410.0" y="659.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">watermark, with a</text><text x="410.0" y="681.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">5-minute overlap</text>
+<circle cx="397.0" cy="709.5" r="3.5" fill="#F59E0B"/>
+<text x="410.0" y="714.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Rows rejected before are</text><text x="410.0" y="735.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">read again until fixed</text><text x="410.0" y="757.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">at the source</text>
+<rect x="384.0" y="866.5" width="234.0" height="60" rx="12" fill="#232027"/>
+<text x="398.0" y="893.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">Incremental run: 771 rows</text><text x="398.0" y="911.4" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">instead of 59,000</text>
+</g>
+<path d="M642.0 622.2 h22" stroke="#FCD34D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 3 Transform">
+<rect x="672.0" y="300" width="270.0" height="644.5" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="698.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="724.0" cy="356" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(707.0 339.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></g>
+<text x="916.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#37333C" text-anchor="end">03</text>
+<text x="698.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">Transform</text>
+<text x="698.0" y="449.6" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#FCD34D" text-anchor="start">rules.py · transform.py</text>
+<text x="698.0" y="470.5" font-family="Inter, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#B0A9B5" text-anchor="start">pure functions, unit tested</text>
+<rect x="698.0" y="486.1" width="218.0" height="1" fill="#37333C"/>
+<circle cx="703.0" cy="515.1" r="3.5" fill="#F59E0B"/>
+<text x="716.0" y="520.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">CPF check digits and</text><text x="716.0" y="541.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">lost zeros, name case,</text><text x="716.0" y="562.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">encoding repair, date</text><text x="716.0" y="584.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">formats</text>
+<circle cx="703.0" cy="612.3" r="3.5" fill="#F59E0B"/>
+<text x="716.0" y="617.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Same CPF typed in</text><text x="716.0" y="638.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">different ways: one</text><text x="716.0" y="659.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">customer, newest</text><text x="716.0" y="681.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">registration wins</text>
+<circle cx="703.0" cy="709.5" r="3.5" fill="#F59E0B"/>
+<text x="716.0" y="714.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Deterministic UUIDs: any</text><text x="716.0" y="735.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">run can be repeated and</text><text x="716.0" y="757.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">compared</text>
+<circle cx="703.0" cy="785.4" r="3.5" fill="#F59E0B"/>
+<text x="716.0" y="790.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Rejected records keep</text><text x="716.0" y="811.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">their reason</text>
+<rect x="690.0" y="866.5" width="234.0" height="60" rx="12" fill="#232027"/>
+<text x="704.0" y="893.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">Mapping documented in</text><text x="704.0" y="911.4" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">docs/mapping.md</text>
+</g>
+<path d="M948.0 622.2 h22" stroke="#FCD34D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 4 Load">
+<rect x="978.0" y="300" width="270.0" height="644.5" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="1004.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="1030.0" cy="356" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(1013.0 339.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.8"/><path d="M5 5.5v13c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-13"/><path d="M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></g>
+<text x="1222.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#37333C" text-anchor="end">04</text>
+<text x="1004.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">Load</text>
+<text x="1004.0" y="449.6" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#FCD34D" text-anchor="start">load.py</text>
+<text x="1004.0" y="470.5" font-family="Inter, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#B0A9B5" text-anchor="start">idempotent upserts</text>
+<rect x="1004.0" y="486.1" width="218.0" height="1" fill="#37333C"/>
+<text x="1004.0" y="520.1" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#7E7684" text-anchor="start" letter-spacing="2">TARGET SYSTEMS</text>
+<rect x="1004.0" y="534.1" width="218.0" height="46" rx="10" fill="#232027" stroke="#5EEAD4" stroke-opacity="0.5"/>
+<text x="1018.0" y="554.1" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F4F1F5" text-anchor="start">PostgreSQL · core</text>
+<text x="1018.0" y="572.1" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#5EEAD4" text-anchor="start">system of record</text>
+<rect x="1004.0" y="588.1" width="218.0" height="46" rx="10" fill="#232027" stroke="#5EEAD4" stroke-opacity="0.5"/>
+<text x="1018.0" y="608.1" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F4F1F5" text-anchor="start">PostgreSQL · migration</text>
+<text x="1018.0" y="626.1" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#5EEAD4" text-anchor="start">runs, checks, rejected</text>
+<rect x="1004.0" y="642.1" width="218.0" height="46" rx="10" fill="#232027" stroke="#5EEAD4" stroke-opacity="0.5"/>
+<text x="1018.0" y="662.1" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#F4F1F5" text-anchor="start">MongoDB · profiles</text>
+<text x="1018.0" y="680.1" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="500" fill="#5EEAD4" text-anchor="start">app read model, Decimal128</text>
+<circle cx="1009.0" cy="713.1" r="3.5" fill="#F59E0B"/>
+<text x="1022.0" y="718.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">INSERT … ON CONFLICT</text><text x="1022.0" y="739.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">guarded by the legacy</text><text x="1022.0" y="760.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">'changed at': re-runs</text><text x="1022.0" y="782.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">never duplicate</text>
+<rect x="996.0" y="866.5" width="234.0" height="60" rx="12" fill="#232027"/>
+<text x="1010.0" y="893.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">Newer data is never</text><text x="1010.0" y="911.4" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">overwritten by older</text>
+</g>
+<path d="M1254.0 622.2 h22" stroke="#FCD34D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 5 Reconciliation gate">
+<rect x="1284.0" y="300" width="270.0" height="644.5" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="1310.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="1336.0" cy="356" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(1319.0 339.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.9-4.3-1.7-7.5-5.3-7.5-9.9V6z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.6"/></g>
+<text x="1528.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#37333C" text-anchor="end">05</text>
+<text x="1310.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">Reconciliation</text><text x="1310.0" y="445.6" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">gate</text>
+<text x="1310.0" y="477.2" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#FCD34D" text-anchor="start">reconcile.py</text>
+<text x="1310.0" y="498.1" font-family="Inter, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#B0A9B5" text-anchor="start">7 critical + 3 info checks</text>
+<rect x="1310.0" y="513.7" width="218.0" height="1" fill="#37333C"/>
+<circle cx="1315.0" cy="542.7" r="3.5" fill="#F59E0B"/>
+<text x="1328.0" y="547.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Every legacy row</text><text x="1328.0" y="569.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">migrated or rejected:</text><text x="1328.0" y="590.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">nothing lost, nothing</text><text x="1328.0" y="611.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">invented</text>
+<circle cx="1315.0" cy="639.9" r="3.5" fill="#F59E0B"/>
+<text x="1328.0" y="644.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Every transaction</text><text x="1328.0" y="666.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">compared field by field</text>
+<circle cx="1315.0" cy="694.5" r="3.5" fill="#F59E0B"/>
+<text x="1328.0" y="699.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Money totals and app</text><text x="1328.0" y="720.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">balances checked</text>
+<circle cx="1315.0" cy="749.1" r="3.5" fill="#F59E0B"/>
+<text x="1328.0" y="754.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">A failure sends the</text><text x="1328.0" y="775.4" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">alert and returns exit</text><text x="1328.0" y="796.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">code 1</text>
+<rect x="1302.0" y="866.5" width="234.0" height="60" rx="12" fill="#232027"/>
+<text x="1316.0" y="893.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">The cut-over waits for a</text><text x="1316.0" y="911.4" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">passed run</text>
+</g>
+<path d="M1560.0 622.2 h22" stroke="#FCD34D" stroke-width="2.5" marker-end="url(#arrow)"/>
+<g id="Layer 6 Apps and monitoring">
+<rect x="1590.0" y="300" width="270.0" height="644.5" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<rect x="1616.0" y="300" width="70" height="3.5" rx="1.75" fill="url(#accent)"/>
+<circle cx="1642.0" cy="356" r="28" fill="#232027" stroke="#B45309" stroke-width="1.5"/>
+<g transform="translate(1625.0 339.0) scale(1.4167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="M7.5 10l2.5 2-2.5 2M12 14h4.5"/></g>
+<text x="1834.0" y="348.0" font-family="Inter, Segoe UI, sans-serif" font-size="30" font-weight="800" fill="#37333C" text-anchor="end">06</text>
+<text x="1616.0" y="418.0" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">Apps and</text><text x="1616.0" y="445.6" font-family="Inter, Segoe UI, sans-serif" font-size="24" font-weight="800" fill="#F4F1F5" text-anchor="start">monitoring</text>
+<text x="1616.0" y="477.2" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#FCD34D" text-anchor="start">api/app.py · powerbi/</text>
+<text x="1616.0" y="498.1" font-family="Inter, Segoe UI, sans-serif" font-size="14.5" font-weight="400" fill="#B0A9B5" text-anchor="start">FastAPI · Power BI</text>
+<rect x="1616.0" y="513.7" width="218.0" height="1" fill="#37333C"/>
+<circle cx="1621.0" cy="542.7" r="3.5" fill="#F59E0B"/>
+<text x="1634.0" y="547.7" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">REST API: customer</text><text x="1634.0" y="569.0" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">profile, statements, run</text><text x="1634.0" y="590.3" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">history (API key, masked</text><text x="1634.0" y="611.6" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">CPF)</text>
+<circle cx="1621.0" cy="639.9" r="3.5" fill="#F59E0B"/>
+<text x="1634.0" y="644.9" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Power BI cut-over</text><text x="1634.0" y="666.2" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">dashboard: gate, backlog</text><text x="1634.0" y="687.5" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">burn-down, check history</text>
+<circle cx="1621.0" cy="715.8" r="3.5" fill="#F59E0B"/>
+<text x="1634.0" y="720.8" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">Runbook for cut-over and</text><text x="1634.0" y="742.1" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="400" fill="#F4F1F5" text-anchor="start">rollback</text>
+<rect x="1608.0" y="866.5" width="234.0" height="60" rx="12" fill="#232027"/>
+<text x="1622.0" y="893.5" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">No personal data leaves for</text><text x="1622.0" y="911.4" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="400" fill="#B0A9B5" text-anchor="start">the dashboard</text>
+</g>
+<rect x="60" y="984.5" width="888.0" height="310" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<g transform="translate(88.0 1010.5) scale(1.2500)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></g>
+<text x="130.0" y="1034.5" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">Where the code is</text>
+<rect x="88" y="1064.5" width="832.0" height="62" rx="10" fill="#232027"/>
+<rect x="88" y="1064.5" width="5" height="62" rx="2.5" fill="#FCD34D"/>
+<text x="108.0" y="1090.5" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#F4F1F5" text-anchor="start">src/migration</text>
+<text x="908.0" y="1090.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FCD34D" text-anchor="end">Python · SQL</text>
+<text x="108.0" y="1113.5" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Extract, rules, load, reconciliation, API, rehearsal, Power BI export</text>
+<rect x="88" y="1134.5" width="832.0" height="62" rx="10" fill="#232027"/>
+<rect x="88" y="1134.5" width="5" height="62" rx="2.5" fill="#5EEAD4"/>
+<text x="108.0" y="1160.5" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#F4F1F5" text-anchor="start">powerbi · scripts</text>
+<text x="908.0" y="1160.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#5EEAD4" text-anchor="end">Power BI · TMDL</text>
+<text x="108.0" y="1183.5" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Migration Control dashboard: model, report as code, quality gate</text>
+<rect x="88" y="1204.5" width="832.0" height="62" rx="10" fill="#232027"/>
+<rect x="88" y="1204.5" width="5" height="62" rx="2.5" fill="#34D399"/>
+<text x="108.0" y="1230.5" font-family="JetBrains Mono, Consolas, monospace" font-size="14" font-weight="600" fill="#F4F1F5" text-anchor="start">tests · .github/workflows</text>
+<text x="908.0" y="1230.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#34D399" text-anchor="end">pytest · CI</text>
+<text x="108.0" y="1253.5" font-family="Inter, Segoe UI, sans-serif" font-size="13.5" font-weight="400" fill="#B0A9B5" text-anchor="start">Unit + integration on SQL Server, PostgreSQL and MongoDB containers</text>
+<rect x="972.0" y="984.5" width="888.0" height="310" rx="22" fill="#1B191E" stroke="#37333C" stroke-width="1.5"/>
+<g transform="translate(1000.0 1010.5) scale(1.2500)" fill="none" stroke="#5EEAD4" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4.5-5"/><circle cx="12" cy="16" r="1.5"/></g>
+<text x="1042.0" y="1034.5" font-family="Inter, Segoe UI, sans-serif" font-size="22" font-weight="800" fill="#F4F1F5" text-anchor="start">What the project proves</text>
+<rect x="1000.0" y="1066.5" width="199.0" height="202" rx="14" fill="#232027"/>
+<rect x="1018.0" y="1066.5" width="44" height="3" rx="1.5" fill="#5EEAD4"/>
+<text x="1018.0" y="1130.5" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#5EEAD4" text-anchor="start">0</text>
+<text x="1018.0" y="1168.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">differences in 45,803</text><text x="1018.0" y="1188.4" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">transactions compared</text><text x="1018.0" y="1208.2" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">field by field</text>
+<rect x="1211.0" y="1066.5" width="199.0" height="202" rx="14" fill="#232027"/>
+<rect x="1229.0" y="1066.5" width="44" height="3" rx="1.5" fill="#5EEAD4"/>
+<text x="1229.0" y="1130.5" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#5EEAD4" text-anchor="start">−93%</text>
+<text x="1229.0" y="1168.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">rejected backlog in</text><text x="1229.0" y="1188.4" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">10 business days (692</text><text x="1229.0" y="1208.2" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">→ 47)</text>
+<rect x="1422.0" y="1066.5" width="199.0" height="202" rx="14" fill="#232027"/>
+<rect x="1440.0" y="1066.5" width="44" height="3" rx="1.5" fill="#5EEAD4"/>
+<text x="1440.0" y="1130.5" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#5EEAD4" text-anchor="start">771</text>
+<text x="1440.0" y="1168.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">rows read by an</text><text x="1440.0" y="1188.4" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">incremental run</text><text x="1440.0" y="1208.2" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">instead of 59,000</text>
+<rect x="1633.0" y="1066.5" width="199.0" height="202" rx="14" fill="#232027"/>
+<rect x="1651.0" y="1066.5" width="44" height="3" rx="1.5" fill="#5EEAD4"/>
+<text x="1651.0" y="1130.5" font-family="Inter, Segoe UI, sans-serif" font-size="40" font-weight="800" fill="#5EEAD4" text-anchor="start">100%</text>
+<text x="1651.0" y="1168.5" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">of the legacy rows</text><text x="1651.0" y="1188.4" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">migrated or in the</text><text x="1651.0" y="1208.2" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="400" fill="#B0A9B5" text-anchor="start">backlog</text>
+</svg>
