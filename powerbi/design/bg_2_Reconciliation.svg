@@ -1,83 +1,74 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
 <defs>
   <linearGradient id="shell" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
-    <stop stop-color="#0A1B33"/><stop offset="0.55" stop-color="#10294D"/><stop offset="1" stop-color="#163866"/>
+    <stop stop-color="#0C0B0A"/><stop offset="0.6" stop-color="#14120F"/><stop offset="1" stop-color="#1D1A16"/>
   </linearGradient>
-  <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
-    <stop stop-color="#38BDF8"/><stop offset="1" stop-color="#2563EB"/>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="#FCD34D"/><stop offset="1" stop-color="#D97706"/>
   </linearGradient>
-  <linearGradient id="activeChip" x1="0" y1="0" x2="1" y2="1">
-    <stop stop-color="#3B82F6"/><stop offset="1" stop-color="#38BDF8"/>
-  </linearGradient>
-  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1700 120) scale(900)">
-    <stop stop-color="#38BDF8" stop-opacity="0.30"/><stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+  <radialGradient id="ember" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1820 1040) scale(820)">
+    <stop stop-color="#F59E0B" stop-opacity="0.16"/><stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
   </radialGradient>
-  <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%" color-interpolation-filters="sRGB">
-    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#10294D" flood-opacity="0.08"/>
-    <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#10294D" flood-opacity="0.06"/>
-  </filter>
-  <filter id="panelShadow" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-    <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#00110F" flood-opacity="0.35"/>
-  </filter>
-  <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-    <circle cx="2" cy="2" r="1.6" fill="#FFFFFF" fill-opacity="0.08"/>
+  <pattern id="hatch" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="22" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="2"/>
   </pattern>
 </defs>
 <rect id="Background" width="1920" height="1080" fill="url(#shell)"/>
-<rect id="Glow" width="1920" height="1080" fill="url(#glow)"/>
-<rect id="Dot grid" x="1500" y="0" width="420" height="300" fill="url(#dots)"/>
+<rect id="Ember" width="1920" height="1080" fill="url(#ember)"/>
+<rect id="Hatch" width="1920" height="1080" fill="url(#hatch)"/>
 <g id="Navigation rail">
-<g id="Brand mark"><rect x="24" y="30" width="48" height="48" rx="14" fill="url(#activeChip)"/><g transform="translate(33.0 39.0) scale(1.2500)" fill="none" stroke="#FFFFFF" stroke-width="2.20" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M8 12h8M13.5 9.5 16 12l-2.5 2.5"/></g></g>
-<g id="Icon Cover" transform="translate(33.0 183.0) scale(1.2500)" fill="none" stroke="#FFFFFF" stroke-opacity="0.62" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/></g>
-<g id="Icon Cut-over status" transform="translate(33.0 279.0) scale(1.2500)" fill="none" stroke="#FFFFFF" stroke-opacity="0.62" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></g>
-<rect id="Active Reconciliation history" x="20" y="362" width="56" height="56" rx="16" fill="url(#activeChip)"/><rect x="0" y="370" width="5" height="40" rx="2.5" fill="#38BDF8"/>
-<g id="Icon Reconciliation history" transform="translate(33.0 375.0) scale(1.2500)" fill="none" stroke="#FFFFFF" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4v4h4"/><path d="M12 7.5V12l3 2"/></g>
-<g id="Icon Rejected backlog" transform="translate(33.0 471.0) scale(1.2500)" fill="none" stroke="#FFFFFF" stroke-opacity="0.62" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13.5 6 5h12l2.5 8.5V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19z"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/></g>
+<g id="Brand mark"><circle cx="48" cy="54" r="26" fill="none" stroke="url(#accent)" stroke-width="2.5"/><g transform="translate(33.0 39.0) scale(1.2500)" fill="none" stroke="#FCD34D" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="6.5" cy="6" rx="3.5" ry="1.8"/><path d="M3 6v11c0 1 1.6 1.8 3.5 1.8S10 18 10 17V6"/><ellipse cx="17.5" cy="6" rx="3.5" ry="1.8"/><path d="M14 6v11c0 1 1.6 1.8 3.5 1.8S21 18 21 17V6"/><path d="M10 12h4"/></g></g>
+<rect x="30" y="98" width="36" height="1.5" fill="#2F2A24"/>
+<g id="Icon Cover" transform="translate(33.0 183.0) scale(1.2500)" fill="none" stroke="#A39A8E" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 10.5v7.5M9.5 10.5v7.5M14.5 10.5v7.5M19 10.5v7.5"/><path d="M3 20.5h18"/></g>
+<g id="Icon Cut-over status" transform="translate(33.0 279.0) scale(1.2500)" fill="none" stroke="#A39A8E" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4.5-5"/><circle cx="12" cy="16" r="1.5"/><path d="M4 20h16"/></g>
+<circle id="Active Reconciliation history" cx="48" cy="390" r="27" fill="#2A241D" stroke="#F59E0B" stroke-width="2"/><rect x="0" y="372" width="4" height="36" rx="2" fill="#F59E0B"/>
+<g id="Icon Reconciliation history" transform="translate(33.0 375.0) scale(1.2500)" fill="none" stroke="#FCD34D" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M8 20h8M5 8h14"/><path d="M5 8 2.5 13.5a2.5 2.5 0 0 0 5 0z"/><path d="M19 8l-2.5 5.5a2.5 2.5 0 0 0 5 0z"/></g>
+<g id="Icon Rejected backlog" transform="translate(33.0 471.0) scale(1.2500)" fill="none" stroke="#A39A8E" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3.5" width="12" height="14.5" rx="1.5"/><path d="M4.5 7v12A1.5 1.5 0 0 0 6 20.5h10"/><path d="M10 8h6M10 11h6M10 14h3"/></g>
 </g>
-<rect id="Content panel" x="108.0" y="12.0" width="1800.0" height="1056.0" rx="30" fill="#F3F6FB" filter="url(#panelShadow)"/>
+<rect id="Content panel" x="108.0" y="12.0" width="1800.0" height="1056.0" rx="18" fill="#12100E" stroke="#2F2A24" stroke-width="1.5"/>
 <g id="Header">
-<rect x="141.0" y="30.0" width="45.0" height="45.0" rx="12" fill="#E6EEFC"/>
-<g id="Header icon" transform="translate(151.0 40.0) scale(1.0417)" fill="none" stroke="#2563EB" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4v4h4"/><path d="M12 7.5V12l3 2"/></g>
-<rect x="189.0" y="36.0" width="2" height="33.0" rx="1" fill="#DFE6F1"/>
-<rect id="Data badge" x="1491.0" y="39.0" width="384.0" height="42.0" rx="21.0" fill="#E6EEFC"/>
-<circle cx="1512.0" cy="60.0" r="5" fill="#38BDF8"/>
-<text x="1527.0" y="67.0" font-family="Inter, Segoe UI, sans-serif" font-size="19" font-weight="600" fill="#2563EB">Cut-over rehearsal · 10 business days</text>
-<text id="Page title" x="204.0" y="55.5" font-family="Inter, Segoe UI, sans-serif" font-size="28" font-weight="700" fill="#0F1B33">Reconciliation History</text>
-<text id="Page subtitle" x="204.0" y="87.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" fill="#5B6B85">Every check in every run · run 6 failed: a value edited by hand in PostgreSQL, repaired by the next full run</text>
-<rect x="132.0" y="114.0" width="1752.0" height="1.5" fill="#DFE6F1"/>
+<circle cx="163.5" cy="52.5" r="22.5" fill="#2A241D" stroke="#2F2A24" stroke-width="1.5"/>
+<g id="Header icon" transform="translate(151.0 40.0) scale(1.0417)" fill="none" stroke="#FCD34D" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M8 20h8M5 8h14"/><path d="M5 8 2.5 13.5a2.5 2.5 0 0 0 5 0z"/><path d="M19 8l-2.5 5.5a2.5 2.5 0 0 0 5 0z"/></g>
+<rect id="Data badge" x="1470.0" y="39.0" width="405.0" height="42.0" rx="21.0" fill="none" stroke="#D97706" stroke-width="1.5"/>
+<circle cx="1491.0" cy="60.0" r="5" fill="#F59E0B"/>
+<text x="1506.0" y="67.0" font-family="Inter, Segoe UI, sans-serif" font-size="19" font-weight="600" fill="#FCD34D">Cut-over rehearsal · 10 business days</text>
+<text id="Page title" x="198.0" y="55.5" font-family="Inter, Segoe UI, sans-serif" font-size="28" font-weight="700" fill="#F3EDE4">Reconciliation History</text>
+<text id="Page subtitle" x="198.0" y="87.0" font-family="Inter, Segoe UI, sans-serif" font-size="17" fill="#A39A8E">Every check in every run · run 6 failed: a value edited by hand in PostgreSQL, repaired by the next full run</text>
+<rect x="132.0" y="114.0" width="1752.0" height="1.5" fill="#2F2A24"/>
+<rect x="132.0" y="113.5" width="90" height="2.5" fill="url(#accent)"/>
 </g>
 <g id="Frames">
 <g id="Frame k_runs">
-<rect x="132.0" y="126.0" width="424.5" height="138.0" rx="20" fill="#FFFFFF" stroke="#DFE6F1" stroke-width="1.5" filter="url(#shadow)"/>
-<rect x="132.0" y="144.0" width="5" height="102.0" rx="2.5" fill="url(#accent)"/>
-<rect x="504.5" y="142.0" width="38" height="38" rx="11" fill="#E6EEFC"/>
-<g transform="translate(512.5 150.0) scale(0.9167)" fill="none" stroke="#2563EB" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4v4h4"/><path d="M12 7.5V12l3 2"/></g>
+<rect x="132.0" y="126.0" width="424.5" height="138.0" rx="14" fill="#1C1916" stroke="#2F2A24" stroke-width="1.5"/>
+<rect x="152.0" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="522.5" cy="160.0" r="19" fill="#2A241D" stroke="#2F2A24" stroke-width="1.2"/>
+<g transform="translate(511.5 149.0) scale(0.9167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M8 20h8M5 8h14"/><path d="M5 8 2.5 13.5a2.5 2.5 0 0 0 5 0z"/><path d="M19 8l-2.5 5.5a2.5 2.5 0 0 0 5 0z"/></g>
 </g>
 <g id="Frame k_failed">
-<rect x="574.5" y="126.0" width="424.5" height="138.0" rx="20" fill="#FFFFFF" stroke="#DFE6F1" stroke-width="1.5" filter="url(#shadow)"/>
-<rect x="574.5" y="144.0" width="5" height="102.0" rx="2.5" fill="url(#accent)"/>
-<rect x="947.0" y="142.0" width="38" height="38" rx="11" fill="#E6EEFC"/>
-<g transform="translate(955.0 150.0) scale(0.9167)" fill="none" stroke="#2563EB" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21 19.5H3z"/><path d="M12 10v4.2"/><circle cx="12" cy="17" r=".6"/></g>
+<rect x="574.5" y="126.0" width="424.5" height="138.0" rx="14" fill="#1C1916" stroke="#2F2A24" stroke-width="1.5"/>
+<rect x="594.5" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="965.0" cy="160.0" r="19" fill="#2A241D" stroke="#2F2A24" stroke-width="1.2"/>
+<g transform="translate(954.0 149.0) scale(0.9167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 3.5h7l5 5v7l-5 5h-7l-5-5v-7z"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></g>
 </g>
 <g id="Frame k_last">
-<rect x="1017.0" y="126.0" width="424.5" height="138.0" rx="20" fill="#FFFFFF" stroke="#DFE6F1" stroke-width="1.5" filter="url(#shadow)"/>
-<rect x="1017.0" y="144.0" width="5" height="102.0" rx="2.5" fill="url(#accent)"/>
-<rect x="1389.5" y="142.0" width="38" height="38" rx="11" fill="#E6EEFC"/>
-<g transform="translate(1397.5 150.0) scale(0.9167)" fill="none" stroke="#2563EB" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g>
+<rect x="1017.0" y="126.0" width="424.5" height="138.0" rx="14" fill="#1C1916" stroke="#2F2A24" stroke-width="1.5"/>
+<rect x="1037.0" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1407.5" cy="160.0" r="19" fill="#2A241D" stroke="#2F2A24" stroke-width="1.2"/>
+<g transform="translate(1396.5 149.0) scale(0.9167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><circle cx="12" cy="15" r="1.6"/></g>
 </g>
 <g id="Frame k_duration">
-<rect x="1459.5" y="126.0" width="424.5" height="138.0" rx="20" fill="#FFFFFF" stroke="#DFE6F1" stroke-width="1.5" filter="url(#shadow)"/>
-<rect x="1459.5" y="144.0" width="5" height="102.0" rx="2.5" fill="url(#accent)"/>
-<rect x="1832.0" y="142.0" width="38" height="38" rx="11" fill="#E6EEFC"/>
-<g transform="translate(1840.0 150.0) scale(0.9167)" fill="none" stroke="#2563EB" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g>
+<rect x="1459.5" y="126.0" width="424.5" height="138.0" rx="14" fill="#1C1916" stroke="#2F2A24" stroke-width="1.5"/>
+<rect x="1479.5" y="126.0" width="56" height="3" rx="1.5" fill="url(#accent)"/>
+<circle cx="1850.0" cy="160.0" r="19" fill="#2A241D" stroke="#2F2A24" stroke-width="1.2"/>
+<g transform="translate(1839.0 149.0) scale(0.9167)" fill="none" stroke="#FCD34D" stroke-width="1.90" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V10M10 3.5h4M18 7l1.5-1.5"/></g>
 </g>
 <g id="Frame matrix">
-<rect x="132.0" y="282.0" width="1752.0" height="450.0" rx="20" fill="#FFFFFF" stroke="#DFE6F1" stroke-width="1.5" filter="url(#shadow)"/>
-<rect x="148.0" y="302.0" width="5" height="22" rx="2.5" fill="url(#accent)"/>
+<rect x="132.0" y="282.0" width="1752.0" height="450.0" rx="14" fill="#1C1916" stroke="#2F2A24" stroke-width="1.5"/>
+<circle cx="152.0" cy="313.0" r="4" fill="#F59E0B"/>
 </g>
 <g id="Frame volume">
-<rect x="132.0" y="750.0" width="1752.0" height="300.0" rx="20" fill="#FFFFFF" stroke="#DFE6F1" stroke-width="1.5" filter="url(#shadow)"/>
-<rect x="148.0" y="770.0" width="5" height="22" rx="2.5" fill="url(#accent)"/>
+<rect x="132.0" y="750.0" width="1752.0" height="300.0" rx="14" fill="#1C1916" stroke="#2F2A24" stroke-width="1.5"/>
+<circle cx="152.0" cy="781.0" r="4" fill="#F59E0B"/>
 </g>
 </g>
 </svg>

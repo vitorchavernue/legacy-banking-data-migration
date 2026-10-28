@@ -118,7 +118,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#10294D'"
+                      "Value": "'#FCD34D'"
                     }
                   }
                 }
@@ -129,7 +129,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#E6EEFC'"
+                      "Value": "'#2A241D'"
                     }
                   }
                 }
@@ -167,7 +167,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#0F1B33'"
+                      "Value": "'#F3EDE4'"
                     }
                   }
                 }
@@ -178,7 +178,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FFFFFF'"
+                      "Value": "'#1C1916'"
                     }
                   }
                 }
@@ -189,7 +189,70 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#F6FAFA'"
+                      "Value": "'#221E1A'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F3EDE4'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1C1916'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F3EDE4'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2A241D'"
                     }
                   }
                 }
@@ -206,7 +269,18 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#EAF1F1'"
+                      "Value": "'#2F2A24'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#2F2A24'"
                     }
                   }
                 }
@@ -217,7 +291,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#DFE6F1'"
+                      "Value": "'#2F2A24'"
                     }
                   }
                 }
@@ -336,7 +410,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#0F1B33'"
+                      "Value": "'#F3EDE4'"
                     }
                   }
                 }
@@ -388,7 +462,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#5B6B85'"
+                      "Value": "'#A39A8E'"
                     }
                   }
                 }

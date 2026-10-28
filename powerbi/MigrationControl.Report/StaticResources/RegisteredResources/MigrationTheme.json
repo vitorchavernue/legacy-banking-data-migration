@@ -1,24 +1,40 @@
 {
-  "name": "Migration Control",
+  "name": "Migration Control (dark)",
   "dataColors": [
-    "#2563EB",
-    "#F2A541",
-    "#14B8A6",
-    "#E0604F",
-    "#8B5CF6",
-    "#16A34A",
-    "#94A3B8",
-    "#EC4899"
+    "#F59E0B",
+    "#D6D3D1",
+    "#34D399",
+    "#F0614D",
+    "#A78BFA",
+    "#F472B6",
+    "#78716C",
+    "#FDE68A"
   ],
-  "foreground": "#0F1B33",
-  "foregroundNeutralSecondary": "#5B6B85",
-  "background": "#FFFFFF",
-  "backgroundLight": "#F3F6FB",
-  "tableAccent": "#2563EB",
-  "good": "#2FB57C",
-  "neutral": "#F2A541",
-  "bad": "#E0604F",
-  "maximum": "#2563EB",
-  "center": "#BFD3F7",
-  "minimum": "#FFFFFF"
+  "foreground": "#F3EDE4",
+  "foregroundNeutralSecondary": "#A39A8E",
+  "foregroundNeutralTertiary": "#6F675D",
+  "background": "#1C1916",
+  "backgroundLight": "#221E1A",
+  "backgroundNeutral": "#2F2A24",
+  "tableAccent": "#F59E0B",
+  "good": "#34D399",
+  "neutral": "#F59E0B",
+  "bad": "#F0614D",
+  "maximum": "#F59E0B",
+  "center": "#7C5A1E",
+  "minimum": "#1C1916",
+  "textClasses": {
+    "label": {
+      "color": "#F3EDE4"
+    },
+    "callout": {
+      "color": "#F3EDE4"
+    },
+    "title": {
+      "color": "#F3EDE4"
+    },
+    "header": {
+      "color": "#F3EDE4"
+    }
+  }
 }

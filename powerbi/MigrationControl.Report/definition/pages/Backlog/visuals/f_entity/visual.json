@@ -59,6 +59,34 @@
             }
           }
         }
+      ],
+      "items": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F3EDE4'"
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#221E1A'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -170,7 +198,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#0F1B33'"
+                      "Value": "'#F3EDE4'"
                     }
                   }
                 }

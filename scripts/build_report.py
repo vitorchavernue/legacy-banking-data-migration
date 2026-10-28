@@ -29,54 +29,58 @@ PLATFORM_SCHEMA = "https://developer.microsoft.com/json-schemas/fabric/gitIntegr
 S = 1.5  # Power BI px -> design px
 F = "Checks"  # default table for measures (overridden per call)
 
-# ------------------------------------------------------------------ design tokens (navy, banking)
-SHELL_900, SHELL_800, SHELL_700 = "#0A1B33", "#10294D", "#163866"
-TEAL_600, TEAL_500, MINT_400 = "#2563EB", "#3B82F6", "#38BDF8"  # blue accents
-PANEL, CARD, LINE = "#F3F6FB", "#FFFFFF", "#DFE6F1"
-INK, MUTED, CHIP = "#0F1B33", "#5B6B85", "#E6EEFC"
-CORAL = "#E0604F"
+# ------------------------------------------------------------------ design tokens (graphite + amber, dark)
+SHELL_900, SHELL_800, SHELL_700 = "#0C0B0A", "#14120F", "#1D1A16"
+AMBER_600, AMBER_500, AMBER_300 = "#D97706", "#F59E0B", "#FCD34D"
+PANEL, CARD, CARD_ALT, LINE = "#12100E", "#1C1916", "#221E1A", "#2F2A24"
+INK, MUTED, CHIP = "#F3EDE4", "#A39A8E", "#2A241D"
+CORAL, GREEN = "#F0614D", "#34D399"
 THEME = {
-    "name": "Migration Control",
-    "dataColors": [TEAL_600, "#F2A541", "#14B8A6", CORAL, "#8B5CF6", "#16A34A", "#94A3B8", "#EC4899"],
+    "name": "Migration Control (dark)",
+    "dataColors": [AMBER_500, "#D6D3D1", GREEN, CORAL, "#A78BFA", "#F472B6", "#78716C", "#FDE68A"],
     "foreground": INK,
     "foregroundNeutralSecondary": MUTED,
+    "foregroundNeutralTertiary": "#6F675D",
     "background": CARD,
-    "backgroundLight": PANEL,
-    "tableAccent": TEAL_600,
-    "good": "#2FB57C",
-    "neutral": "#F2A541",
+    "backgroundLight": CARD_ALT,
+    "backgroundNeutral": LINE,
+    "tableAccent": AMBER_500,
+    "good": GREEN,
+    "neutral": AMBER_500,
     "bad": CORAL,
-    "maximum": TEAL_600,
-    "center": "#BFD3F7",
-    "minimum": "#FFFFFF",
+    "maximum": AMBER_500,
+    "center": "#7C5A1E",
+    "minimum": CARD,
+    "textClasses": {
+        "label": {"color": INK},
+        "callout": {"color": INK},
+        "title": {"color": INK},
+        "header": {"color": INK},
+    },
 }
 
+# Line icons, 24x24 (bank building, gauge, scales, paper stack, padlock, banknote ...)
 ICONS = {
-    "shield": '<path d="M12 3.5 19 6v5.5c0 4.3-3 7.6-7 9-4-1.4-7-4.7-7-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/>',
-    "database": '<ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/>'
-    '<path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/>',
-    "layers": '<path d="M12 3.5 21 8l-9 4.5L3 8z"/><path d="M3 12.5l9 4.5 9-4.5"/><path d="M3 17l9 4.5 9-4.5"/>',
-    "inbox": '<path d="M3.5 13.5 6 5h12l2.5 8.5V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19z"/><path d="M3.5 13.5H8l1.5 2.5h5l1.5-2.5h4.5"/>',
-    "coin": '<circle cx="12" cy="12" r="8"/><path d="M14.8 9.2c-.6-.9-1.6-1.4-2.8-1.4-1.6 0-2.8.9-2.8 2.1 0 2.9 5.6 1.4 5.6 4.2 0 1.2-1.2 2.1-2.8 2.1-1.2 0-2.3-.5-2.9-1.4M12 6.3v1.5M12 16.8v1.4"/>',
-    "history": '<path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4v4h4"/><path d="M12 7.5V12l3 2"/>',
-    "migrate": '<rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M8 12h8M13.5 9.5 16 12l-2.5 2.5"/>',
-    "home": '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5h4v5"/>',
-    "overview": '<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/>'
-    '<rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>',
-    "clock": '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-    "scorecard": '<rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
-    "trend": '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
-    "headset": '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/>'
-    '<rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-1.5 2.5-4 2.5h-2"/>',
-    "target": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.3"/>',
-    "check": '<circle cx="12" cy="12" r="8.5"/><path d="M8.3 12.2l2.5 2.5 4.9-5"/>',
-    "exit": '<path d="M14 4h4.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H14"/><path d="M10 16l4-4-4-4M14 12H4"/>',
-    "hourglass": '<path d="M7 3.5h10M7 20.5h10M8 3.5c0 4 8 4.5 8 8.5s-8 4.5-8 8.5M16 3.5c0 4-8 4.5-8 8.5"/>',
-    "users": '<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.4 2.7-6 6-6s6 2.6 6 6"/><circle cx="17.5" cy="9" r="2.4"/>'
-    '<path d="M16.5 14.2c2.6.3 4.5 2.4 4.5 5"/>',
-    "alert": '<path d="M12 4 21 19.5H3z"/><path d="M12 10v4.2"/><circle cx="12" cy="17" r=".6"/>',
-    "filter": '<path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/>',
-    "calendar": '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    "home": '<path d="M3 9.5 12 4l9 5.5"/><path d="M5 10.5v7.5M9.5 10.5v7.5M14.5 10.5v7.5M19 10.5v7.5"/><path d="M3 20.5h18"/>',
+    "overview": '<path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l4.5-5"/><circle cx="12" cy="16" r="1.5"/><path d="M4 20h16"/>',
+    "history": '<path d="M12 4v16M8 20h8M5 8h14"/><path d="M5 8 2.5 13.5a2.5 2.5 0 0 0 5 0z"/>'
+    '<path d="M19 8l-2.5 5.5a2.5 2.5 0 0 0 5 0z"/>',
+    "inbox": '<rect x="7" y="3.5" width="12" height="14.5" rx="1.5"/><path d="M4.5 7v12A1.5 1.5 0 0 0 6 20.5h10"/>'
+    '<path d="M10 8h6M10 11h6M10 14h3"/>',
+    "shield": '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>'
+    '<path d="M9.5 15.5l1.8 1.8 3.2-3.3"/>',
+    "check": '<rect x="5.5" y="4.5" width="13" height="16" rx="2"/><path d="M9 4.5V3h6v1.5"/><path d="M9 12.5l2 2 4-4.5"/>',
+    "database": '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5V12h8.5"/>',
+    "layers": '<path d="M4 8h13M14 5l3 3-3 3"/><path d="M20 16H7M10 13l-3 3 3 3"/>',
+    "coin": '<rect x="2.5" y="6.5" width="19" height="11" rx="1.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/>',
+    "alert": '<path d="M8.5 3.5h7l5 5v7l-5 5h-7l-5-5v-7z"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/>',
+    "calendar": '<rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>'
+    '<circle cx="12" cy="15" r="1.6"/>',
+    "clock": '<circle cx="12" cy="13.5" r="7"/><path d="M12 13.5V10M10 3.5h4M18 7l1.5-1.5"/>',
+    "trend": '<path d="M3 7l6 6 4-4 8 8"/><path d="M15 17h6v-6"/>',
+    "filter": '<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+    "migrate": '<ellipse cx="6.5" cy="6" rx="3.5" ry="1.8"/><path d="M3 6v11c0 1 1.6 1.8 3.5 1.8S10 18 10 17V6"/>'
+    '<ellipse cx="17.5" cy="6" rx="3.5" ry="1.8"/><path d="M14 6v11c0 1 1.6 1.8 3.5 1.8S21 18 21 17V6"/><path d="M10 12h4"/>',
 }
 
 
@@ -316,9 +320,15 @@ def chart(
     objects = {
         "labels": [{"properties": {"show": lit("true" if labels else "false"), "color": color(INK), "fontSize": num(9)}}],
         "legend": [
-            {"properties": {"show": lit("true" if (len(values) > 1 or series) else "false"), "position": text("TopRight")}}
+            {
+                "properties": {
+                    "show": lit("true" if (len(values) > 1 or series) else "false"),
+                    "position": text("TopRight"),
+                    "labelColor": color(MUTED),
+                }
+            }
         ],
-        "valueAxis": [{"properties": {"gridlineColor": color("#E6EFEF"), "fontSize": num(9), "labelColor": color(MUTED)}}],
+        "valueAxis": [{"properties": {"gridlineColor": color(LINE), "fontSize": num(9), "labelColor": color(MUTED)}}],
         "categoryAxis": [{"properties": {"fontSize": num(9), "showAxisTitle": lit("false"), "labelColor": color(MUTED)}}],
     }
     if colors and not series:
@@ -370,7 +380,7 @@ def table(page, vid, x, y, w, h, columns, title, subtitle=None, sort=None, kind=
                 "columnHeaders": [
                     {
                         "properties": {
-                            "fontColor": color(SHELL_800),
+                            "fontColor": color(AMBER_300),
                             "backColor": color(CHIP),
                             "fontSize": num(9),
                             "bold": lit("true"),
@@ -383,11 +393,21 @@ def table(page, vid, x, y, w, h, columns, title, subtitle=None, sort=None, kind=
                             "fontSize": num(9),
                             "fontColor": color(INK),
                             "backColorPrimary": color(CARD),
-                            "backColorSecondary": color("#F6FAFA"),
+                            "backColorSecondary": color(CARD_ALT),
                         }
                     }
                 ],
-                "grid": [{"properties": {"gridHorizontalColor": color("#EAF1F1"), "outlineColor": color(LINE)}}],
+                "rowHeaders": [{"properties": {"fontColor": color(INK), "backColor": color(CARD), "fontSize": num(9)}}],
+                "total": [{"properties": {"fontColor": color(INK), "backColor": color(CHIP)}}],
+                "grid": [
+                    {
+                        "properties": {
+                            "gridHorizontalColor": color(LINE),
+                            "gridVerticalColor": color(LINE),
+                            "outlineColor": color(LINE),
+                        }
+                    }
+                ],
             },
             "visualContainerObjects": container(title, subtitle),
         },
@@ -406,7 +426,11 @@ def slicer(page, vid, x, y, w, h, field, title, icon_name="filter"):
         {
             "visualType": "slicer",
             "query": {"queryState": {"Values": {"projections": [proj(field)]}}},
-            "objects": {"data": [{"properties": {"mode": text("Dropdown")}}], "header": [{"properties": {"show": lit("false")}}]},
+            "objects": {
+                "data": [{"properties": {"mode": text("Dropdown")}}],
+                "header": [{"properties": {"show": lit("false")}}],
+                "items": [{"properties": {"fontColor": color(INK), "background": color(CARD_ALT)}}],
+            },
             "visualContainerObjects": container(title),
         },
     )
@@ -470,7 +494,7 @@ def status():
         "Money on hold after each run",
         "Rejected transactions waiting for a business decision",
         sort=(RUN, "Ascending"),
-        colors=[TEAL_600],
+        colors=[AMBER_500],
     )
     table(
         p,
@@ -569,7 +593,7 @@ def backlog():
         tooltips=[(m("Backlog Amount", "Backlog"), "Amount")],
         sort=(m("Backlog Records", "Backlog"), "Descending"),
         labels=True,
-        colors=[TEAL_600],
+        colors=[AMBER_500],
     )
     chart(
         p,
@@ -611,26 +635,16 @@ def backlog():
 def defs():
     return f"""<defs>
   <linearGradient id="shell" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
-    <stop stop-color="{SHELL_900}"/><stop offset="0.55" stop-color="{SHELL_800}"/><stop offset="1" stop-color="{SHELL_700}"/>
+    <stop stop-color="{SHELL_900}"/><stop offset="0.6" stop-color="{SHELL_800}"/><stop offset="1" stop-color="{SHELL_700}"/>
   </linearGradient>
-  <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
-    <stop stop-color="{MINT_400}"/><stop offset="1" stop-color="{TEAL_600}"/>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop stop-color="{AMBER_300}"/><stop offset="1" stop-color="{AMBER_600}"/>
   </linearGradient>
-  <linearGradient id="activeChip" x1="0" y1="0" x2="1" y2="1">
-    <stop stop-color="{TEAL_500}"/><stop offset="1" stop-color="{MINT_400}"/>
-  </linearGradient>
-  <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1700 120) scale(900)">
-    <stop stop-color="{MINT_400}" stop-opacity="0.30"/><stop offset="1" stop-color="{MINT_400}" stop-opacity="0"/>
+  <radialGradient id="ember" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1820 1040) scale(820)">
+    <stop stop-color="{AMBER_500}" stop-opacity="0.16"/><stop offset="1" stop-color="{AMBER_500}" stop-opacity="0"/>
   </radialGradient>
-  <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%" color-interpolation-filters="sRGB">
-    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="{SHELL_800}" flood-opacity="0.08"/>
-    <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="{SHELL_800}" flood-opacity="0.06"/>
-  </filter>
-  <filter id="panelShadow" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-    <feDropShadow dx="0" dy="12" stdDeviation="24" flood-color="#00110F" flood-opacity="0.35"/>
-  </filter>
-  <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-    <circle cx="2" cy="2" r="1.6" fill="#FFFFFF" fill-opacity="0.08"/>
+  <pattern id="hatch" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="22" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="2"/>
   </pattern>
 </defs>"""
 
@@ -643,33 +657,31 @@ def esc(t):
 
 
 def shell(active):
+    """Dark canvas, hatched texture, slim navigation rail with an amber ring on the active page."""
     out = [
         '<rect id="Background" width="1920" height="1080" fill="url(#shell)"/>',
-        '<rect id="Glow" width="1920" height="1080" fill="url(#glow)"/>',
-        '<rect id="Dot grid" x="1500" y="0" width="420" height="300" fill="url(#dots)"/>',
+        '<rect id="Ember" width="1920" height="1080" fill="url(#ember)"/>',
+        '<rect id="Hatch" width="1920" height="1080" fill="url(#hatch)"/>',
         '<g id="Navigation rail">',
-        '<g id="Brand mark"><rect x="24" y="30" width="48" height="48" rx="14" fill="url(#activeChip)"/>'
-        + icon("migrate", 33, 39, 30, "#FFFFFF", 2.2)
+        '<g id="Brand mark"><circle cx="48" cy="54" r="26" fill="none" stroke="url(#accent)" stroke-width="2.5"/>'
+        + icon("migrate", 33, 39, 30, AMBER_300, 2)
         + "</g>",
+        f'<rect x="30" y="98" width="36" height="1.5" fill="{LINE}"/>',
     ]
     for i, (name, _, label) in enumerate(NAV):
         cy = (108 + i * 64 + 24) * S
         if name == active:
             out.append(
-                f'<rect id="Active {label}" x="20" y="{cy - 28:.0f}" width="56" height="56" rx="16" fill="url(#activeChip)"/>'
-                f'<rect x="0" y="{cy - 20:.0f}" width="5" height="40" rx="2.5" fill="{MINT_400}"/>'
+                f'<circle id="Active {label}" cx="48" cy="{cy:.0f}" r="27" fill="{CHIP}" stroke="{AMBER_500}" stroke-width="2"/>'
+                f'<rect x="0" y="{cy - 18:.0f}" width="4" height="36" rx="2" fill="{AMBER_500}"/>'
             )
-            out.append(icon(name, 33, cy - 15, 30, "#FFFFFF", 2, f"Icon {label}"))
+            out.append(icon(name, 33, cy - 15, 30, AMBER_300, 2, f"Icon {label}"))
         else:
-            out.append(
-                icon(name, 33, cy - 15, 30, "#FFFFFF", 1.8, f"Icon {label}").replace(
-                    'stroke="#FFFFFF"', 'stroke="#FFFFFF" stroke-opacity="0.62"'
-                )
-            )
+            out.append(icon(name, 33, cy - 15, 30, MUTED, 1.8, f"Icon {label}"))
     out.append("</g>")
     out.append(
-        f'<rect id="Content panel" x="{72 * S}" y="{8 * S}" width="{(1272 - 72) * S}" height="{(712 - 8) * S}" rx="30" '
-        f'fill="{PANEL}" filter="url(#panelShadow)"/>'
+        f'<rect id="Content panel" x="{72 * S}" y="{8 * S}" width="{(1272 - 72) * S}" height="{(712 - 8) * S}" rx="18" '
+        f'fill="{PANEL}" stroke="{LINE}" stroke-width="1.5"/>'
     )
     return out
 
@@ -677,86 +689,107 @@ def shell(active):
 def page_header(page):
     return [
         '<g id="Header">',
-        f'<rect x="{94 * S}" y="{20 * S}" width="{30 * S}" height="{30 * S}" rx="12" fill="{CHIP}"/>',
-        icon(page.nav, 94 * S + 10, 20 * S + 10, 25, TEAL_600, 2, "Header icon"),
-        f'<rect x="{126 * S}" y="{24 * S}" width="2" height="{22 * S}" rx="1" fill="{LINE}"/>',
-        f'<rect id="Data badge" x="{994 * S}" y="{26 * S}" width="{256 * S}" height="{28 * S}" rx="{14 * S}" fill="{CHIP}"/>',
-        f'<circle cx="{1008 * S}" cy="{40 * S}" r="5" fill="{MINT_400}"/>',
-        f'<text x="{1018 * S}" y="{40 * S + 7}" font-family="{FONT}" font-size="19" font-weight="600" fill="{TEAL_600}">'
+        f'<circle cx="{109 * S}" cy="{35 * S}" r="{15 * S}" fill="{CHIP}" stroke="{LINE}" stroke-width="1.5"/>',
+        icon(page.nav, 109 * S - 12.5, 35 * S - 12.5, 25, AMBER_300, 2, "Header icon"),
+        f'<rect id="Data badge" x="{980 * S}" y="{26 * S}" width="{270 * S}" height="{28 * S}" rx="{14 * S}" '
+        f'fill="none" stroke="{AMBER_600}" stroke-width="1.5"/>',
+        f'<circle cx="{994 * S}" cy="{40 * S}" r="5" fill="{AMBER_500}"/>',
+        f'<text x="{1004 * S}" y="{40 * S + 7}" font-family="{FONT}" font-size="19" font-weight="600" fill="{AMBER_300}">'
         "Cut-over rehearsal · 10 business days</text>",
-        f'<text id="Page title" x="{136 * S}" y="{37 * S}" font-family="{FONT}" font-size="28" font-weight="700" fill="{INK}">'
+        f'<text id="Page title" x="{132 * S}" y="{37 * S}" font-family="{FONT}" font-size="28" font-weight="700" fill="{INK}">'
         f"{esc(page.title)}</text>",
-        f'<text id="Page subtitle" x="{136 * S}" y="{58 * S}" font-family="{FONT}" font-size="17" fill="{MUTED}">'
+        f'<text id="Page subtitle" x="{132 * S}" y="{58 * S}" font-family="{FONT}" font-size="17" fill="{MUTED}">'
         f"{esc(page.subtitle)}</text>",
         f'<rect x="{X0 * S}" y="{76 * S}" width="{(X1 - X0) * S}" height="1.5" fill="{LINE}"/>',
+        f'<rect x="{X0 * S}" y="{76 * S - 0.5}" width="90" height="2.5" fill="url(#accent)"/>',
         "</g>",
     ]
 
 
 def frames_svg(page):
+    """Dark cards, hairline border, amber top rule on KPIs, round icon badges."""
     out = ['<g id="Frames">']
     for f in page.frames:
         x, y, w, h = f["x"] * S, f["y"] * S, f["w"] * S, f["h"] * S
         out.append(f'<g id="Frame {f["id"]}">')
         out.append(
-            f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="20" fill="{CARD}" '
-            f'stroke="{LINE}" stroke-width="1.5" filter="url(#shadow)"/>'
+            f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="14" fill="{CARD}" '
+            f'stroke="{LINE}" stroke-width="1.5"/>'
         )
         if f["kind"] == "kpi":
-            out.append(f'<rect x="{x:.1f}" y="{y + 18:.1f}" width="5" height="{h - 36:.1f}" rx="2.5" fill="url(#accent)"/>')
+            out.append(f'<rect x="{x + 20:.1f}" y="{y:.1f}" width="56" height="3" rx="1.5" fill="url(#accent)"/>')
         if f["kind"] in ("kpi", "control") and f["icon"]:
-            cx, cy = x + w - 52, y + 16
-            out.append(f'<rect x="{cx:.1f}" y="{cy:.1f}" width="38" height="38" rx="11" fill="{CHIP}"/>')
-            out.append(icon(f["icon"], cx + 8, cy + 8, 22, TEAL_600, 2))
+            cx, cy = x + w - 34, y + 34
+            out.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="19" fill="{CHIP}" stroke="{LINE}" stroke-width="1.2"/>')
+            out.append(icon(f["icon"], cx - 11, cy - 11, 22, AMBER_300, 1.9))
         if f["kind"] == "chart":
-            out.append(f'<rect x="{x + 16:.1f}" y="{y + 20:.1f}" width="5" height="22" rx="2.5" fill="url(#accent)"/>')
+            out.append(f'<circle cx="{x + 20:.1f}" cy="{y + 31:.1f}" r="4" fill="{AMBER_500}"/>')
         out.append("</g>")
     out.append("</g>")
     return out
 
 
 def cover_svg():
+    """Cover: legacy database -> new systems, connected by the reconciliation gate."""
     tiles = []
     descriptions = ["Gate, coverage and money", "Every check in every run", "Reasons and burn-down"]
     labels = ["Cut-over status", "Reconciliation", "Rejected backlog"]
     for i, (name, _, _) in enumerate(NAV[1:]):
         x, y, w, h = (88 + i * 292) * S, 560 * S, 276 * S, 96 * S
         tiles.append(
-            f'<g id="Tile {labels[i]}"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="22" fill="#FFFFFF" '
-            f'fill-opacity="0.07" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1.5"/>'
-            f'<rect x="{x + 22}" y="{y + 30}" width="84" height="84" rx="20" fill="url(#activeChip)"/>'
-            + icon(name, x + 43, y + 51, 42, "#FFFFFF", 2)
-            + f'<text x="{x + 126}" y="{y + 66}" font-family="{FONT}" font-size="25" font-weight="600" fill="#FFFFFF">'
+            f'<g id="Tile {labels[i]}"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="16" fill="{CARD}" '
+            f'stroke="{LINE}" stroke-width="1.5"/>'
+            f'<rect x="{x + 24}" y="{y}" width="64" height="3" rx="1.5" fill="url(#accent)"/>'
+            f'<circle cx="{x + 66}" cy="{y + h / 2}" r="38" fill="{CHIP}" stroke="{AMBER_600}" stroke-width="1.5"/>'
+            + icon(name, x + 45, y + h / 2 - 21, 42, AMBER_300, 1.9)
+            + f'<text x="{x + 124}" y="{y + 66}" font-family="{FONT}" font-size="25" font-weight="600" fill="{INK}">'
             f"{labels[i]}</text>"
-            f'<text x="{x + 126}" y="{y + 100}" font-family="{FONT}" font-size="18" fill="#FFFFFF" fill-opacity="0.66">'
-            f"{descriptions[i]}</text>"
-            f'<path d="M{x + w - 36} {y + h / 2 - 9} l9 9 -9 9" stroke="{MINT_400}" stroke-width="3" fill="none" '
+            f'<text x="{x + 124}" y="{y + 100}" font-family="{FONT}" font-size="18" fill="{MUTED}">{descriptions[i]}</text>'
+            f'<path d="M{x + w - 36} {y + h / 2 - 9} l9 9 -9 9" stroke="{AMBER_500}" stroke-width="3" fill="none" '
             'stroke-linecap="round" stroke-linejoin="round"/></g>'
         )
-    # burn-down motif: the rejected backlog shrinking day after day
-    heights = [380, 270, 190, 140, 115, 85, 60, 45, 32, 28]
-    bars = "".join(
-        f'<rect x="{1300 + i * 58}" y="{720 - hgt}" width="40" height="{hgt}" rx="10" fill="#FFFFFF" '
-        f'fill-opacity="{0.22 - i * 0.015:.3f}"/>'
-        for i, hgt in enumerate(heights)
+
+    def cylinder(cx, top, label, sub, stroke):
+        rx, ry, hgt = 120, 30, 230
+        return (
+            f'<g id="{label}"><path d="M{cx - rx} {top} v{hgt} a{rx} {ry} 0 0 0 {2 * rx} 0 v-{hgt}" fill="{CARD}" '
+            f'stroke="{stroke}" stroke-width="2.5"/>'
+            f'<ellipse cx="{cx}" cy="{top}" rx="{rx}" ry="{ry}" fill="{CHIP}" stroke="{stroke}" stroke-width="2.5"/>'
+            f'<path d="M{cx - rx} {top + 80} a{rx} {ry} 0 0 0 {2 * rx} 0 M{cx - rx} {top + 160} a{rx} {ry} 0 0 0 {2 * rx} 0" '
+            f'fill="none" stroke="{stroke}" stroke-opacity="0.45" stroke-width="2"/>'
+            f'<text x="{cx}" y="{top + hgt + 80}" text-anchor="middle" font-family="{FONT}" font-size="24" font-weight="600" '
+            f'fill="{INK}">{label}</text>'
+            f'<text x="{cx}" y="{top + hgt + 112}" text-anchor="middle" font-family="{FONT}" font-size="18" fill="{MUTED}">'
+            f"{sub}</text></g>"
+        )
+
+    flow = "".join(
+        f'<path d="M1395 {300 + k * 50} C1480 {300 + k * 50} 1500 {330 + k * 30} 1560 {330 + k * 30}" fill="none" '
+        f'stroke="{AMBER_500}" stroke-opacity="{0.75 - k * 0.15:.2f}" stroke-width="2.5" stroke-dasharray="8 8"/>'
+        for k in range(4)
     )
-    trend = " ".join(f"{1320 + i * 58},{720 - hgt}" for i, hgt in enumerate(heights))
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
 {defs()}
 <rect id="Background" width="1920" height="1080" fill="url(#shell)"/>
-<rect id="Glow" width="1920" height="1080" fill="url(#glow)"/>
-<rect id="Dot grid" x="1080" y="80" width="760" height="560" fill="url(#dots)"/>
-<g id="Burn-down bars">{bars}</g>
-<polyline id="Burn-down line" points="{trend}" stroke="{MINT_400}" stroke-opacity="0.7" stroke-width="4" fill="none"/>
-<g id="Brand"><rect x="132" y="150" width="72" height="72" rx="20" fill="url(#activeChip)"/>
-{icon("migrate", 146, 164, 44, "#FFFFFF", 2.2)}
-<text x="228" y="196" font-family="{FONT}" font-size="26" font-weight="600" letter-spacing="3" fill="#FFFFFF" fill-opacity="0.8">DATA MIGRATION</text></g>
-<g id="Title pill"><rect x="-60" y="300" width="1100" height="150" rx="75" fill="#FFFFFF"/>
-<text x="132" y="398" font-family="{FONT}" font-size="64" font-weight="700" fill="{SHELL_800}">Migration Control</text>
-<circle cx="965" cy="375" r="50" fill="url(#activeChip)"/><path d="M952 352 l30 23 -30 23z" fill="#FFFFFF"/></g>
-<text id="Subtitle" x="132" y="520" font-family="{FONT}" font-size="28" fill="#FFFFFF" fill-opacity="0.78">Legacy core banking (SQL Server) → PostgreSQL + MongoDB</text>
+<rect id="Ember" width="1920" height="1080" fill="url(#ember)"/>
+<rect id="Hatch" width="1920" height="1080" fill="url(#hatch)"/>
+<g id="Illustration">
+{cylinder(1270, 250, "Legacy", "SQL Server", MUTED)}
+{flow}
+<g id="Gate"><circle cx="1560" cy="380" r="46" fill="{CHIP}" stroke="{AMBER_500}" stroke-width="2.5"/>
+{icon("check", 1538, 358, 44, AMBER_300, 2)}</g>
+<path d="M1606 380 H1650" stroke="{AMBER_500}" stroke-width="2.5"/>
+{cylinder(1770, 250, "New systems", "PostgreSQL + MongoDB", AMBER_500)}
+</g>
+<g id="Brand"><circle cx="168" cy="186" r="36" fill="none" stroke="url(#accent)" stroke-width="3"/>
+{icon("migrate", 146, 164, 44, AMBER_300, 2)}
+<text x="228" y="196" font-family="{FONT}" font-size="26" font-weight="600" letter-spacing="4" fill="{AMBER_300}">DATA MIGRATION</text></g>
+<text id="Title" x="128" y="400" font-family="{FONT}" font-size="92" font-weight="800" fill="{INK}">Migration</text>
+<text id="Title accent" x="128" y="500" font-family="{FONT}" font-size="92" font-weight="800" fill="{AMBER_500}">Control</text>
+<rect x="132" y="540" width="120" height="4" rx="2" fill="url(#accent)"/>
+<text id="Subtitle" x="132" y="600" font-family="{FONT}" font-size="26" fill="{MUTED}">Legacy core banking → new systems, one reconciled run at a time</text>
 <g id="Navigation tiles">{"".join(tiles)}</g>
-<text id="Footer" x="132" y="1030" font-family="{FONT}" font-size="18" fill="#FFFFFF" fill-opacity="0.45">Power BI · PBIP / TMDL · DAX · run history exported by the migration pipeline</text>
+<text id="Footer" x="132" y="1030" font-family="{FONT}" font-size="18" fill="{MUTED}" fill-opacity="0.7">Power BI · PBIP / TMDL · DAX · run history exported by the migration pipeline</text>
 </svg>"""
 
 
