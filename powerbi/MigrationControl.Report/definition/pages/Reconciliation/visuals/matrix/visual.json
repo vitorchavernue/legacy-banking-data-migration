@@ -240,6 +240,26 @@
           }
         }
       ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
       "grid": [
         {
           "properties": {

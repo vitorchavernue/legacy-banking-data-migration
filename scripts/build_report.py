@@ -399,6 +399,7 @@ def table(page, vid, x, y, w, h, columns, title, subtitle=None, sort=None, kind=
                 ],
                 "rowHeaders": [{"properties": {"fontColor": color(INK), "backColor": color(CARD), "fontSize": num(9)}}],
                 "total": [{"properties": {"fontColor": color(INK), "backColor": color(CHIP)}}],
+                "subTotals": [{"properties": {"rowSubtotals": lit("false"), "columnSubtotals": lit("false")}}],
                 "grid": [
                     {
                         "properties": {
